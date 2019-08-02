@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Imal</string>
+    <string name="create_budget_db">Create budget</string>
+    <string name="profile_db">Profile</string>
+    <string name="add_exp_db">Add expense</string>
+    <string name="add_custExp_db">Add category</string>
+    <string name="exit_db">Exit</string>
+    <string name="report_db">Reports</string>
+
+
+</resources>
