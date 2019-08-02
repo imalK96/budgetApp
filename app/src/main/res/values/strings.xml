@@ -6,6 +6,10 @@
     <string name="add_custExp_db">Add category</string>
     <string name="exit_db">Exit</string>
     <string name="report_db">Reports</string>
-
+    <string name="login_btn">Login</string>
+    <string name="login_emailHint">Email</string>
+    <string name="login_pwHint">Password</string>
+    <string name="db_header">My Dashboard</string>
+    <string name = "createAccount">No account yet? Create one</string>>
 
 </resources>
