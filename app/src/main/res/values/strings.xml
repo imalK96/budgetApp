@@ -10,6 +10,11 @@
     <string name="login_emailHint">Email</string>
     <string name="login_pwHint">Password</string>
     <string name="db_header">My Dashboard</string>
-    <string name = "createAccount">No account yet? Create one</string>>
-
+    <string name="createAccount">No account yet? Create one</string>
+    <string name="profile_name">Mark Strong</string>
+    <string name="editProfileBtn">Update</string>
+    <string name="disableProfileBtn">Disable</string>
+    <string name="profileField1">Income</string>
+    <string name="profileField2">Expenses</string>
+    <string name="profileField3">Savings</string>
 </resources>

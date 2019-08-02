@@ -211,7 +211,9 @@
                     android:id="@+id/profile"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:clickable="true"
                     android:gravity="center"
+                    android:onClick="profileNav"
                     android:orientation="vertical"
                     android:padding="16dp">
 
