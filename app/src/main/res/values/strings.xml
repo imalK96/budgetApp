@@ -17,4 +17,8 @@
     <string name="profileField1">Income</string>
     <string name="profileField2">Expenses</string>
     <string name="profileField3">Savings</string>
+    <string name="profileName">John Doe</string>
+    <string name="reg_btn">Register</string>
+
+
 </resources>

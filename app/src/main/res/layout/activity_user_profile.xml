@@ -34,11 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userImg"
-                android:text="John Doe"
                 android:layout_centerHorizontal="true"
-                android:textSize="32sp"
+                android:layout_marginTop="15dp"
+                android:text="@string/profileName"
                 android:textColor="#FFFFFF"
-                android:layout_marginTop="15dp"/>
+                android:textSize="32sp" />
 
         </RelativeLayout>
 
