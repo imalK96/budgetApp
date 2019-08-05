@@ -25,4 +25,10 @@ public class MainActivity extends AppCompatActivity {
         Intent profileIntent = new Intent(getBaseContext(), userProfile.class);
         startActivity(profileIntent);
     }
+
+    public void addCat(View v){
+
+        Intent addCategory = new Intent(getBaseContext(), addCategory.class);
+        startActivity(addCategory);
+    }
 }
