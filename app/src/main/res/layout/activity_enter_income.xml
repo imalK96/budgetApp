@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EnterIncome"
+    android:background="@drawable/bgapps">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/insert_income"
+            android:textSize="40sp"
+            android:textColor="#f3f3f3"
+            android:textAlignment="center"
+            android:padding="40dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="71dp"
+            android:hint="@string/insert_salary" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/insert_other" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/insert_bank" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/finish"
+            android:enabled="true"
+            android:background="@drawable/roundedbutton"
+            />
+
+    </LinearLayout>
+
+
+
+
+</ScrollView>
+
