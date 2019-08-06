@@ -25,6 +25,15 @@
     <string name = "List">LIST:</string>
     <string name = "button1">UPDATE</string>
     <string name = "button2">DELETE</string>
+    <string name = "budget_duration_start">Start Date for Budget Plan</string>
+    <string name = "budget_duration_end">End Date for Budget Plan</string>
+    <string name = "insert_income">Insert Income</string>
+    <string name = "insert_salary">Insert Salary Income</string>
+    <string name = "insert_other">Insert Other Income</string>
+    <string name = "insert_bank">Insert Bank Interests</string>
+    <string name = "finish">Finish</string>
+    <string name = "next">Next</string>
+    <string name = "next1">Next</string>
 
 
 
