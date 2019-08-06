@@ -32,9 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="10dp"
+                android:onClick="enterIncome"
                 android:paddingHorizontal="66dp"
                 android:text="@string/next"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
         </DatePicker>
 
     </LinearLayout>

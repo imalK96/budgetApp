@@ -38,13 +38,14 @@
             android:hint="@string/insert_bank" />
 
         <Button
+            android:id="@+id/finish"
             android:layout_width="match_parent"
-            android:layout_marginHorizontal="100dp"
             android:layout_height="wrap_content"
-            android:text="@string/finish"
-            android:enabled="true"
+            android:layout_marginHorizontal="100dp"
             android:background="@drawable/roundedbutton"
-            />
+            android:enabled="true"
+            android:onClick="saved"
+            android:text="@string/finish" />
 
     </LinearLayout>
 

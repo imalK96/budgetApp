@@ -38,4 +38,9 @@ public class MainActivity extends AppCompatActivity {
         Intent addExpIntent = new Intent(this, ThanujaMain.class);
         startActivity(addExpIntent);
     }
+
+    public void startDateBudget(View v){
+        Intent sdBudget = new Intent(getBaseContext(),CreateBudget.class);
+        startActivity(sdBudget);
+    }
 }
