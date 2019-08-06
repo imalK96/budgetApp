@@ -15,6 +15,8 @@ import com.example.thanuja.fragments.ViewPagerAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import static com.example.imal.R.string.thanuja_daily;
+
 public class ThanujaMain extends AppCompatActivity implements ExampleDialog.ExampleDialogListener{
     private TabLayout tablayout;
     private ViewPager viewPager;

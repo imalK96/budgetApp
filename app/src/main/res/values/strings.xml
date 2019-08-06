@@ -19,6 +19,13 @@
     <string name="profileField3">Savings</string>
     <string name="profileName">John Doe</string>
     <string name="reg_btn">Register</string>
-
-
+    <string name="thanuja_addexpenses">Add expenses</string>
+    <string name="thanuja_addexpense">Add expense</string>
+    <string name="thanuja_amount">Amount</string>
+    <string name="thanuja_description">Description</string>
+    <string name="thanuja_ok">OK</string>
+    <string name="thanuja_cancel">Cancel</string>
+    <string name="thanuja_daily">Daily</string>
+    <string name="thanuja_monthly">Monthly</string>
+    <string name="thanuja_yearly">Yearly</string>
 </resources>
