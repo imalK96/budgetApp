@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Imal</string>
+    <string name="app_name">My Wallet</string>
     <string name="create_budget_db">Create budget</string>
     <string name="profile_db">Profile</string>
     <string name="add_exp_db">Add expense</string>
@@ -34,6 +34,7 @@
     <string name = "finish">Finish</string>
     <string name = "next">Next</string>
     <string name = "next1">Next</string>
+    <string name = "add">ADD</string>
 
 
 
