@@ -1,12 +1,13 @@
 package com.example.imal;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.example.thanuja.fragments.ThanujaMain;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,5 +31,11 @@ public class MainActivity extends AppCompatActivity {
 
         Intent addCategory = new Intent(getBaseContext(), addCategory.class);
         startActivity(addCategory);
+    }
+
+    //thanuja added
+    public void addExpensesNav(View v){
+        Intent addExpIntent = new Intent(this, ThanujaMain.class);
+        startActivity(addExpIntent);
     }
 }

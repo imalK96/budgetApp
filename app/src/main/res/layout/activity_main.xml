@@ -108,6 +108,7 @@
                         android:id="@+id/addExpBtn"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:onClick="addExpensesNav"
                         android:src="@drawable/coin" />
 
                     <TextView
