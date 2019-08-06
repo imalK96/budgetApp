@@ -16,7 +16,8 @@ public class addCategory extends AppCompatActivity implements android.view.View.
 
     EditText t1,t2;
     String s1,s2;
-    ImageButton b1,b2;
+    ImageButton b2;
+    Button b1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
