@@ -19,6 +19,13 @@
     <string name="profileField3">Savings</string>
     <string name="profileName">John Doe</string>
     <string name="reg_btn">Register</string>
+    <string name = "catName">ADD CATEGORIES</string>
+    <string name = "catName1">Category Name:</string>
+    <string name = "catName2">Amount:</string>
+    <string name = "List">LIST:</string>
+    <string name = "button1">UPDATE</string>
+    <string name = "button2">DELETE</string>
+
 
 
 </resources>
