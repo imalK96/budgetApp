@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class registerUser extends AppCompatActivity implements android.view.View.OnClickListener {
 
-    private EditText emailTxt, passwordTxt;
+    private EditText emailTxt, passwordTxt, nameTxt;
     private Button registerBtn;
 
     private ProgressDialog regProgress;
@@ -31,10 +32,18 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        if(firebaseAuth.getCurrentUser() != null){
+            //go to dashboard
+            finish();
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+
         emailTxt = findViewById(R.id.regEmail);
         passwordTxt = findViewById(R.id.regPw);
 
         registerBtn = findViewById(R.id.regBtn);
+
+        //nameTxt = findViewById(R.id.regName);
 
         registerBtn.setOnClickListener(this);
 
@@ -61,6 +70,7 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
         String email = emailTxt.getText().toString().trim();
         String password = passwordTxt.getText().toString().trim();
+        final String name = nameTxt.getText().toString();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
@@ -84,6 +94,12 @@ public class registerUser extends AppCompatActivity implements android.view.View
                             regProgress.dismiss();
                             if (task.isSuccessful()) {
                                 Toast.makeText(registerUser.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                                //go to dashboard
+                                finish();
+                                Intent regToMain = new Intent(getApplicationContext(), MainActivity.class);
+                                regToMain.putExtra("name", name);
+                                startActivity(regToMain);
+
                             } else{
                                 Toast.makeText(registerUser.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                             }

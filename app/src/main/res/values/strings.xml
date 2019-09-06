@@ -14,28 +14,27 @@
     <string name="profile_name">Mark Strong</string>
     <string name="editProfileBtn">Update</string>
     <string name="disableProfileBtn">Disable</string>
-    <string name="profileField1">Income</string>
-    <string name="profileField2">Expenses</string>
-    <string name="profileField3">Savings</string>
-    <string name="profileName">John Doe</string>
+    <string name="profileField1">Name</string>
+    <string name="profileField2">Email</string>
+    <string name="profileField3">Password</string>
+    <string name="profileName">Profile</string>
     <string name="reg_btn">Register</string>
-    <string name = "catName">ADD CATEGORIES</string>
-    <string name = "catName1">Category Name:</string>
-    <string name = "catName2">Amount:</string>
-    <string name = "List">LIST:</string>
-    <string name = "button1">UPDATE</string>
-    <string name = "button2">DELETE</string>
-    <string name = "budget_duration_start">Start Date for Budget Plan</string>
-    <string name = "budget_duration_end">End Date for Budget Plan</string>
-    <string name = "insert_income">Insert Income</string>
-    <string name = "insert_salary">Insert Salary Income</string>
-    <string name = "insert_other">Insert Other Income</string>
-    <string name = "insert_bank">Insert Bank Interests</string>
-    <string name = "finish">Finish</string>
-    <string name = "next">Next</string>
-    <string name = "next1">Next</string>
-    <string name = "add">ADD</string>
-
+    <string name="catName">ADD CATEGORIES</string>
+    <string name="catName1">Category Name:</string>
+    <string name="catName2">Amount:</string>
+    <string name="List">LIST:</string>
+    <string name="button1">UPDATE</string>
+    <string name="button2">DELETE</string>
+    <string name="budget_duration_start">Start Date for Budget Plan</string>
+    <string name="budget_duration_end">End Date for Budget Plan</string>
+    <string name="insert_income">Insert Income</string>
+    <string name="insert_salary">Insert Salary Income</string>
+    <string name="insert_other">Insert Other Income</string>
+    <string name="insert_bank">Insert Bank Interests</string>
+    <string name="finish">Finish</string>
+    <string name="next">Next</string>
+    <string name="next1">Next</string>
+    <string name="add">ADD</string>
 
 
 </resources>
