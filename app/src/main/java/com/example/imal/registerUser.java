@@ -70,7 +70,7 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
         String email = emailTxt.getText().toString().trim();
         String password = passwordTxt.getText().toString().trim();
-        final String name = nameTxt.getText().toString();
+//        final String name = nameTxt.getText().toString();
 
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
@@ -97,7 +97,7 @@ public class registerUser extends AppCompatActivity implements android.view.View
                                 //go to dashboard
                                 finish();
                                 Intent regToMain = new Intent(getApplicationContext(), MainActivity.class);
-                                regToMain.putExtra("name", name);
+                                //regToMain.putExtra("name", name);
                                 startActivity(regToMain);
 
                             } else{

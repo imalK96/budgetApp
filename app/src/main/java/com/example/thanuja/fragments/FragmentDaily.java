@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,13 @@ import com.example.imal.R;
 import com.example.thanuja.recyclerview.Expense;
 import com.example.thanuja.recyclerview.RecyclerViewAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,10 +37,36 @@ public class FragmentDaily extends Fragment {
         super.onCreate(savedInstanceState);
 
         lstContact = new ArrayList<>();
-        lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
-        lstContact.add(new Expense("Gave to Nuwanga", "Rs. 5000", R.drawable.images));
-        lstContact.add(new Expense("Got a pizza", "Rs. 6000", R.drawable.images));
-        lstContact.add(new Expense("Got a iPhone", "Rs. 100000", R.drawable.images));
+//        lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
+//        lstContact.add(new Expense("Gave to Nuwanga", "Rs. 5000", R.drawable.images));
+//        lstContact.add(new Expense("Got a pizza", "Rs. 6000", R.drawable.images));
+//        lstContact.add(new Expense("Got a iPhone", "Rs. 100000", R.drawable.images));
+        FirebaseAuth firebaseAuth;
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
+
+        readRef.addListenerForSingleValueEvent(new ValueEventListener(){
+            public void onDataChange(DataSnapshot dataSnapshot){
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    lstContact.add(new Expense(ds.child("discription").getValue().toString(), ds.child("amount").getValue().toString(), R.drawable.images));
+
+                }
+
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
+            }
+
+            public void onCancelled(DatabaseError databaseError){
+
+            }
+        });
     }
 
     @Nullable
