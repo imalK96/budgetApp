@@ -22,6 +22,7 @@
         <activity android:name=".CreateBudget1" />
         <activity android:name=".EnterIncome" />
         <activity android:name=".LoginActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

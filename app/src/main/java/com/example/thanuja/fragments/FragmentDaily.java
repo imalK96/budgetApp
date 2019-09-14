@@ -50,7 +50,6 @@ public class FragmentDaily extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot){
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     lstContact.add(new Expense(ds.child("discription").getValue().toString(), ds.child("amount").getValue().toString(), R.drawable.images));
-
                 }
             }
 

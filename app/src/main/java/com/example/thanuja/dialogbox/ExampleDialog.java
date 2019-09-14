@@ -4,16 +4,20 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.imal.R;
+import com.example.thanuja.fragments.FragmentDaily;
+import com.example.thanuja.fragments.ThanujaMain;
 import com.example.thanuja.model.DailyExpense;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -63,6 +67,11 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
                         listener.applyTexts(username, password);
 
+//                        View view1 = this.findViewById(android.R.id.content)).getChildAt(0);
+//                        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this.findViewById(android.R.id.content)).getChildAt(0);
+//                        if(view1 == getView()){
+//
+//                        }
                         //database part added
                         dbRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense");
 
@@ -73,6 +82,9 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         dbRef.child(user.getUid()).push().setValue(de);
 
                         Toast.makeText(getContext(),"Data saved successfully", Toast.LENGTH_SHORT).show();
+
+                        Intent i1 = new Intent(getContext(), ThanujaMain.class);
+                        startActivity(i1);
                     }
                 });
         return builder.create();

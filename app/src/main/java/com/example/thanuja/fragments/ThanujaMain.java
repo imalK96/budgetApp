@@ -1,10 +1,14 @@
 package com.example.thanuja.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.example.imal.R;
 import com.example.thanuja.dialogbox.ExampleDialog;
@@ -24,6 +28,7 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thanuja_main);
+        //setContentView(R.layout.activity_thanuja_daily_fragment);
 
         tablayout = (TabLayout) findViewById(R.id.tablayout_id);
         viewPager = (ViewPager) findViewById(R.id.viewpager_id);
@@ -48,6 +53,8 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
 
         FloatingActionButton fab = findViewById(R.id.fab);
 
+
+
 //        textViewUsername = findViewById(R.id.textview_username);
 //        textViewPassword = findViewById(R.id.textview_password);
 
@@ -58,7 +65,19 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
             }
         });
 
+        //FragmentDaily fragmentDemo = (FragmentDaily) getSupportFragmentManager().findFragmentById(R.id.viewpager_id);
+//        FragmentDaily fragmentDemo = new FragmentDaily();
+//        //above part is to determine which fragment is in your frame_container
+//        setFragment(fragmentDemo);
+
     }
+
+//    protected void setFragment(Fragment fragment) {
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(android.R.id.content, fragment);
+//        fragmentTransaction.commit();
+//    }
 
 
 
