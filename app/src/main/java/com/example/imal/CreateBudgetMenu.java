@@ -15,7 +15,7 @@ public class CreateBudgetMenu extends AppCompatActivity {
     }
 
     public void enterBudget(View v){
-        Intent enterBudget = new Intent(getBaseContext(),CreateBudget.class);
+        Intent enterBudget = new Intent(getBaseContext(),EnterIncome.class);
         startActivity(enterBudget);
     }
 }
