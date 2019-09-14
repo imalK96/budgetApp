@@ -80,6 +80,9 @@ public class LoginActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(password) && TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please enter a password and email", Toast.LENGTH_SHORT).show();
         }
+        else if(password.length() < 8){
+            Toast.makeText(this, "Password must contain 8 characters", Toast.LENGTH_SHORT).show();
+        }
 
         else{
             progressDialog.setMessage("Signing in...");
@@ -95,6 +98,10 @@ public class LoginActivity extends AppCompatActivity {
                                 //go to dashboard
                                 finish();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            }
+
+                            else{
+                                Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });

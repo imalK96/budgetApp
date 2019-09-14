@@ -31,12 +31,12 @@
                 android:src="@drawable/profile" />
 
             <TextView
+                android:id="@+id/displayName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/userImg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
-                android:text="@string/profileName"
                 android:textColor="#FFFFFF"
                 android:textSize="32sp" />
 
@@ -125,9 +125,10 @@
                             android:layout_marginTop="60dp"
                             android:layout_marginRight="30dp"
                             android:background="@color/warningBtn"
+                            android:onClick="deleteAccount"
                             android:text="@string/disableProfileBtn"
-                            android:textColor="#FFFFFF"
 
+                            android:textColor="#FFFFFF"
                             android:textSize="18sp" />
 
                         <Button
