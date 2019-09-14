@@ -20,7 +20,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class registerUser extends AppCompatActivity implements android.view.View.OnClickListener {
 
-    private EditText emailTxt, passwordTxt;
+    private EditText emailTxt, passwordTxt, displayNameTxt;
     private Button registerBtn;
 
     private ProgressDialog regProgress;
@@ -42,10 +42,9 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
         emailTxt = findViewById(R.id.regEmail);
         passwordTxt = findViewById(R.id.regPw);
+        displayNameTxt = findViewById(R.id.regDisplayName);
 
         registerBtn = findViewById(R.id.regBtn);
-
-        //nameTxt = findViewById(R.id.regName);
 
         registerBtn.setOnClickListener(this);
 
@@ -72,6 +71,7 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
         String email = emailTxt.getText().toString().trim();
         String password = passwordTxt.getText().toString().trim();
+        final String displayName = displayNameTxt.getText().toString();
 
 
         if(TextUtils.isEmpty(email)){
@@ -100,7 +100,7 @@ public class registerUser extends AppCompatActivity implements android.view.View
                                 finish();
 
                                 FirebaseUser user = firebaseAuth.getInstance().getCurrentUser();
-                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName("John Smith").build();
+                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder().setDisplayName(displayName).build();
                                 user.updateProfile(profileUpdates);
 
                                 Toast.makeText(registerUser.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
