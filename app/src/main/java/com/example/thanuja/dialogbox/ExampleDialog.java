@@ -32,7 +32,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
     DatabaseReference dbRef;
     DailyExpense de;
     private FirebaseAuth firebaseAuth;
-    int i = 0;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -76,23 +75,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         Toast.makeText(getContext(),"Data saved successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
-//        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
-//        Query lastQuery = databaseReference.orderByKey().limitToLast(1);
-//        lastQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String message = dataSnapshot.child("discription").getValue().toString();
-//                Log.d("Message", message);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//                //Handle possible errors.
-//            }
-//        });
-
         return builder.create();
     }
 
@@ -109,11 +91,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
     }
     public interface ExampleDialogListener{
         void applyTexts(String username, String password);
-    }
-
-    public String incrementExpense(){
-        ++i;
-        return "expense" +i;
     }
 }
 

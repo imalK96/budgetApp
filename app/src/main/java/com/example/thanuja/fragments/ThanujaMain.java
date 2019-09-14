@@ -60,6 +60,8 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
 
     }
 
+
+
     public void openDialog(){
         ExampleDialog exampleDialog = new ExampleDialog();
         exampleDialog.show(getSupportFragmentManager(), "example dialog");

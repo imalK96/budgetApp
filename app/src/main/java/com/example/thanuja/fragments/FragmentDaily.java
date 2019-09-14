@@ -38,9 +38,7 @@ public class FragmentDaily extends Fragment {
 
         lstContact = new ArrayList<>();
 //        lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
-//        lstContact.add(new Expense("Gave to Nuwanga", "Rs. 5000", R.drawable.images));
-//        lstContact.add(new Expense("Got a pizza", "Rs. 6000", R.drawable.images));
-//        lstContact.add(new Expense("Got a iPhone", "Rs. 100000", R.drawable.images));
+
         FirebaseAuth firebaseAuth;
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -54,13 +52,6 @@ public class FragmentDaily extends Fragment {
                     lstContact.add(new Expense(ds.child("discription").getValue().toString(), ds.child("amount").getValue().toString(), R.drawable.images));
 
                 }
-
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
-//                lstContact.add(new Expense(dataSnapshot.child("discription").getValue().toString(), dataSnapshot.child("amount").getValue().toString(), R.drawable.images));
             }
 
             public void onCancelled(DatabaseError databaseError){
