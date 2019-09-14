@@ -2,7 +2,9 @@ package com.example.imal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class CreateBudgetMenu extends AppCompatActivity {
 
@@ -10,5 +12,10 @@ public class CreateBudgetMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_budget_menu);
+    }
+
+    public void enterBudget(View v){
+        Intent enterBudget = new Intent(getBaseContext(),CreateBudget.class);
+        startActivity(enterBudget);
     }
 }

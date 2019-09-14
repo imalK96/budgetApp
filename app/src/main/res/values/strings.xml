@@ -35,6 +35,9 @@
     <string name="next">Next</string>
     <string name="next1">Next</string>
     <string name="add">ADD</string>
-
-
+    <string name="createbudgetmenu">Create Budget</string>
+    <string name="deletebudgetmenu">Delete Budget</string>
+    <string name="viewbudgetmenu">View Budget</string>
+    <string name="updatebudgetmenu">Update Budget</string>
+    <string name="planbudget">Plan Budget</string>
 </resources>

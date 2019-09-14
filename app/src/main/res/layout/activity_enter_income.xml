@@ -39,19 +39,19 @@
 
         <Button
 
-            android:layout_marginHorizontal="100dp"
             android:id="@+id/finish"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:layout_marginHorizontal="100dp"
             android:backgroundTint="#3240A0"
             android:onClick="saved"
             android:paddingHorizontal="66dp"
             android:text="@string/finish"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:textColor="#FFFFFF"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </LinearLayout>
 
