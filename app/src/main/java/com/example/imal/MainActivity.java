@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void startDateBudget(View v){
-        Intent sdBudget = new Intent(getBaseContext(),CreateBudget.class);
+        Intent sdBudget = new Intent(getBaseContext(),CreateBudgetMenu.class);
         startActivity(sdBudget);
     }
 

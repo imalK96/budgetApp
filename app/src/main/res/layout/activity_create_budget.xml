@@ -28,13 +28,16 @@
 
             <Button
                 android:id="@+id/next1"
+                android:layout_marginHorizontal="100dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 android:layout_marginBottom="10dp"
+                android:backgroundTint="#3240A0"
                 android:onClick="endDateBudget"
                 android:paddingHorizontal="66dp"
                 android:text="@string/next"
+                android:textColor="#FFFFFF"
                 android:textStyle="bold" />
         </DatePicker>
 
