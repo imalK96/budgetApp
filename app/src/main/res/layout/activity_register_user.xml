@@ -22,13 +22,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="#FFFFFF"
-                android:textSize="34sp"
-                android:gravity="center"
                 android:layout_marginTop="150dp"
                 android:layout_marginBottom="20dp"
-                />
+                android:gravity="center"
+                android:text="@string/registerTitle"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp" />
 
 
         </RelativeLayout>
@@ -46,7 +45,26 @@
                 android:layout_marginRight="30dp"
                 android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/displayname"
+                        android:textSize="28sp" />
+
+                    <EditText
+                        android:id="@+id/regDisplayName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/nameHint"
+                        android:inputType="textPersonName" />
+
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -64,7 +82,8 @@
                         android:id="@+id/regEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="xzy@gmail.com" />
+                        android:hint="@string/emailHint"
+                        android:inputType="textEmailAddress" />
 
                 </LinearLayout>
 
@@ -84,7 +103,8 @@
                         android:id="@+id/regPw"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="xzy@gmail.com" />
+                        android:hint="@string/passwordHint"
+                        android:inputType="textPassword" />
 
                 </LinearLayout>
 

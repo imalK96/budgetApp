@@ -2,7 +2,11 @@ package com.example.imal;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,7 +25,7 @@ public class userProfile extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
 
-    private TextView userEmailTxt, userPwTxt;
+    private TextView userEmailTxt, userPwTxt, displayNameTxt;
 
     private Button updateBtn, DisableBtn;
 
@@ -41,11 +45,13 @@ public class userProfile extends AppCompatActivity {
 
         userEmailTxt = findViewById(R.id.userPwOld);
         userPwTxt = findViewById(R.id.userPasswordNew);
+        displayNameTxt = findViewById(R.id.displayName);
+
         updateBtn = findViewById(R.id.updateCredBtn);
         DisableBtn = findViewById(R.id.DeleteBtn);
 
         userEmailTxt.setText(user.getEmail());
-
+        displayNameTxt.setText(user.getDisplayName());
 
 
     }
@@ -53,6 +59,25 @@ public class userProfile extends AppCompatActivity {
     public void updateNav(View v){
         Intent profileIntent = new Intent(getBaseContext(), updateCredentials.class);
         startActivity(profileIntent);
+    }
+
+    public void deleteAccount(View view){
+        //Add a dialog box --------------
+
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+
+        currentUser.delete();
+        Intent loginIntent = new Intent(getBaseContext(), LoginActivity.class);
+
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(this, LoginActivity.class));
+
+        //startActivity(loginIntent);
+
+
+
+        
     }
 
 

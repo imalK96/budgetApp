@@ -62,11 +62,11 @@ public class EnterIncome extends AppCompatActivity {
 
         try{
             if (TextUtils.isEmpty(etsal.getText().toString()))
-                Toast.makeText(this, "Fill All Fields, If Null Use 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Fill All Fields,  If Null Use 0", Toast.LENGTH_SHORT).show();
             else if (TextUtils.isEmpty(etother.getText().toString()))
-                Toast.makeText(this, "Fill All Fields, If Null Use 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Fill All Fields,  If Null Use 0", Toast.LENGTH_SHORT).show();
             else if (TextUtils.isEmpty(etbank.getText().toString()))
-                Toast.makeText(this, "Fill All Fields, If Null Use 0", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Fill All Fields,  If Null Use 0", Toast.LENGTH_SHORT).show();
             else {
 
                 enterbudget.setStartdate(cvsds);
@@ -75,7 +75,7 @@ public class EnterIncome extends AppCompatActivity {
                 enterbudget.setIncome(Double.parseDouble(etother.getText().toString().trim()));
                 enterbudget.setInterest(Double.parseDouble(etbank.getText().toString().trim()));
 
-                //dbRef.child(user.getUid()).push().setValue(enterbudget);
+                dbRef.child(user.getUid()).push().setValue(enterbudget);
                 //dbRef.push().setValue(enterbudget);
                 Toast.makeText(this, "Data Saved!", Toast.LENGTH_SHORT).show();
 

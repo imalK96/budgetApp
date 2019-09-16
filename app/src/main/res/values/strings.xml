@@ -40,4 +40,13 @@
     <string name="viewbudgetmenu">View Budget</string>
     <string name="updatebudgetmenu">Update Budget</string>
     <string name="planbudget">Plan Budget</string>
+    <string name="deleteUser">Delete</string>
+    <string name="deleteUserPrompt">Are you sure you want to delete your profile?</string>
+    <string name="deleteUserCancel">Cancel</string>
+    <string name="displayname">Name</string>
+    <string name="registerTitle">Register</string>
+    <string name="nameHint">Enter display name</string>
+    <string name="emailHint">johndoe@gmail.com</string>
+    <string name="passwordHint">Enter Password (8 characters minimum)</string>
+
 </resources>
