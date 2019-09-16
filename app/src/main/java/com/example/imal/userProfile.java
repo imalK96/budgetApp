@@ -45,7 +45,7 @@ public class userProfile extends AppCompatActivity {
 
         userEmailTxt = findViewById(R.id.userPwOld);
         userPwTxt = findViewById(R.id.userPasswordNew);
-        displayNameTxt = findViewById(R.id.displayname);
+        displayNameTxt = findViewById(R.id.displayName);
 
         updateBtn = findViewById(R.id.updateCredBtn);
         DisableBtn = findViewById(R.id.DeleteBtn);
