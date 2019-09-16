@@ -46,17 +46,20 @@
             android:layout_height="wrap_content" />
 
         <EditText
+            android:id="@+id/etsalary"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="71dp"
             android:hint="@string/insert_salary" />
 
         <EditText
+            android:id="@+id/etother"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/insert_other" />
 
         <EditText
+            android:id="@+id/etbank"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/insert_bank" />

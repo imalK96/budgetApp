@@ -4,9 +4,9 @@ public class EnterBudgetDB {
 
     private  String startdate;
     private  String enddate;
-    private String income;
-    private String interest;
-    private String salary;
+    private double income;
+    private double interest;
+    private double salary;
 
     public EnterBudgetDB() {
     }
@@ -19,15 +19,15 @@ public class EnterBudgetDB {
         return enddate;
     }
 
-    public String getIncome() {
+    public double getIncome() {
         return income;
     }
 
-    public String getInterest() {
+    public double getInterest() {
         return interest;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
@@ -39,15 +39,15 @@ public class EnterBudgetDB {
         this.enddate = enddate;
     }
 
-    public void setIncome(String income) {
+    public void setIncome(double income) {
         this.income = income;
     }
 
-    public void setInterest(String interest) {
+    public void setInterest(double interest) {
         this.interest = interest;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 }
