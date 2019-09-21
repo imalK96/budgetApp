@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditBudget"
-    android:background="@drawable/bgapps">
+    android:background="@drawable/bgapps"
+    tools:context=".EditBudget">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,20 +23,20 @@
 
 
         <EditText
-            android:id="@+id/etsalary"
+            android:id="@+id/etsalaryedit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="71dp"
             android:hint="@string/insert_salary" />
 
         <EditText
-            android:id="@+id/etother"
+            android:id="@+id/etotheredit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/insert_other" />
 
         <EditText
-            android:id="@+id/etbank"
+            android:id="@+id/etbankedit"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:hint="@string/insert_bank" />
@@ -46,31 +46,32 @@
             android:layout_height="99dp">
 
             <Button
-                android:id="@+id/update"
+                android:id="@+id/updatebudget"
                 android:layout_width="187dp"
-                android:layout_height="52dp"
+                android:layout_height="47dp"
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="100dp"
                 android:layout_marginStart="208dp"
                 android:layout_marginEnd="8dp"
                 android:backgroundTint="#3240A0"
+
+                android:onClick="updatebudget"
                 android:paddingHorizontal="66dp"
                 android:text="@string/updatebudget"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
-                app:layout_constraintBaseline_toBaselineOf="@+id/delete"
+                app:layout_constraintBaseline_toBaselineOf="@+id/deletebudget"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <Button
-                android:id="@+id/delete"
+                android:id="@+id/deletebudget"
                 android:layout_width="187dp"
                 android:layout_height="52dp"
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="100dp"
                 android:layout_marginEnd="212dp"
                 android:backgroundTint="@color/warningBtn"
-                android:onClick="up"
                 android:paddingHorizontal="66dp"
                 android:text="@string/delbudget"
                 android:textColor="#FFFFFF"
@@ -85,7 +86,4 @@
     </LinearLayout>
 
 
-
-
 </ScrollView>
-

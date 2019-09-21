@@ -1,5 +1,6 @@
 package com.example.imal;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,12 +14,15 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class EnterIncome extends AppCompatActivity {
     private FirebaseAuth firebaseAuth; /*1*/
-    DatabaseReference dbRef;
+    DatabaseReference dbRef,upRef,readRef;
     CalendarView cvsd, cved;
     TextView etsal, etother, etbank;
     private String cvsds, cveds;
@@ -91,4 +95,7 @@ public class EnterIncome extends AppCompatActivity {
 
 
     }
+
+
+
 }
