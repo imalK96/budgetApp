@@ -70,6 +70,7 @@
                 android:layout_marginHorizontal="100dp"
                 android:layout_marginEnd="212dp"
                 android:backgroundTint="@color/warningBtn"
+                android:onClick="up"
                 android:paddingHorizontal="66dp"
                 android:text="@string/delbudget"
                 android:textColor="#FFFFFF"
