@@ -33,6 +33,7 @@ public class FragmentDaily extends Fragment {
         lstContact.add(new Expense("Gave to Nuwanga", "Rs. 5000", R.drawable.images));
         lstContact.add(new Expense("Got a pizza", "Rs. 6000", R.drawable.images));
         lstContact.add(new Expense("Got a iPhone", "Rs. 100000", R.drawable.images));
+
     }
 
     @Nullable

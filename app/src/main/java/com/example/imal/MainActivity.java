@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.Heshan.AddCategory;
 import com.example.thanuja.fragments.ThanujaMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,8 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addCat(View v){
 
-        Intent addCategory = new Intent(getBaseContext(), addCategory.class);
-        startActivity(addCategory);
+
     }
 
     //thanuja added
@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(sdBudget);
     }
 
+
     public void Logout(View v){
         Intent logoutIntent = new Intent(getBaseContext(),LoginActivity.class);
         startActivity(logoutIntent);
@@ -70,4 +71,10 @@ public class MainActivity extends AppCompatActivity {
         finish();
         startActivity(new Intent(this, LoginActivity.class));
     }
+
+    public void addCategory(View v){
+        Intent c1 = new Intent(getBaseContext(), AddCategory.class);
+        startActivity(c1);
+    }
+
 }

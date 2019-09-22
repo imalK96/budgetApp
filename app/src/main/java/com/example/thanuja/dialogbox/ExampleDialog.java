@@ -29,14 +29,14 @@ public class ExampleDialog extends AppCompatDialogFragment {
         editTextPassword = view.findViewById(R.id.edit_password);
 
         builder.setView(view)
-                .setTitle("Add expense")
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setTitle(R.string.thanuja_addexpense)
+                .setNegativeButton(R.string.thanuja_cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                     }
                 })
-                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.thanuja_ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String username = editTextUsername.getText().toString();
