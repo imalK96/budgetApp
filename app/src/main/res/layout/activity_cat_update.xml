@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgapps"
-    tools:context="com.example.Heshan.AddCategory">
+    tools:context="com.example.Heshan.catUpdate">
 
     <TextView
         android:id="@+id/textView"
@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/add_custExp_db"
+        android:text="@string/updateCategory"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -88,36 +88,19 @@
         app:layout_constraintTop_toBottomOf="@+id/catupName" />
 
     <Button
-        android:id="@+id/catAddbtn"
+        android:id="@+id/catup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@color/design_default_color_primary_dark"
-        android:onClick="addCategory"
-        android:text="@string/add"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.872" />
-
-    <Button
-        android:id="@+id/catViewbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="80dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:background="@color/warningBtn"
-        android:text="@string/catView"
-        android:textColor="#FFFFFF"
+        android:text="@string/button1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toEndOf="@+id/catAddbtn"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/catupAmount" />
+
+
+    >
 </androidx.constraintlayout.widget.ConstraintLayout>

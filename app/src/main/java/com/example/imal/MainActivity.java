@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.example.Heshan.AddCategory;
 import com.example.thanuja.fragments.ThanujaMain;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void addCat(View v){
 
-        Intent addCategory = new Intent(getBaseContext(), addCategory.class);
-        startActivity(addCategory);
+
     }
 
     //thanuja added
@@ -43,4 +43,9 @@ public class MainActivity extends AppCompatActivity {
         Intent sdBudget = new Intent(getBaseContext(),CreateBudget.class);
         startActivity(sdBudget);
     }
+    public void addCategory(View v){
+        Intent c1 = new Intent(getBaseContext(), AddCategory.class);
+        startActivity(c1);
+    }
+
 }
