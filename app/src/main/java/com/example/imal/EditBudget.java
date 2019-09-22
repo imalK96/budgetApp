@@ -3,7 +3,9 @@ package com.example.imal;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View;
@@ -72,18 +74,26 @@ public class EditBudget extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.hasChildren()){
-                    try{
-                        enterbudget.setSalary(Double.parseDouble(etsal.getText().toString().trim()));
-                        enterbudget.setIncome(Double.parseDouble(etother.getText().toString().trim()));
-                        enterbudget.setInterest(Double.parseDouble(etbank.getText().toString().trim()));
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        try{
 
-                        upRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
-                        upRef.setValue(enterbudget);
-                        Toast.makeText(getApplicationContext(),"Data Updated", Toast.LENGTH_SHORT).show();
+                            EnterBudgetDB enterbudget = new EnterBudgetDB();
+                            enterbudget.setSalary(Double.parseDouble(etsal.getText().toString().trim()));
+                            enterbudget.setIncome(Double.parseDouble(etother.getText().toString().trim()));
+                            enterbudget.setInterest(Double.parseDouble(etbank.getText().toString().trim()));
 
-                    }catch (NumberFormatException e){
-                        Toast.makeText(getApplicationContext(),"Invalid Data", Toast.LENGTH_SHORT).show();
+                            /*upRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
+                            upRef.setValue(enterbudget);*/
+                            ds.getRef().setValue(enterbudget);
+                            Toast.makeText(getApplicationContext(),"Data Updated", Toast.LENGTH_SHORT).show();
 
+                            Intent tomenu = new Intent(getBaseContext(),CreateBudgetMenu.class);
+                            startActivity(tomenu);
+
+                        }catch (NumberFormatException e){
+                            Toast.makeText(getApplicationContext(),"Invalid Data", Toast.LENGTH_SHORT).show();
+
+                        }
                     }
                 }
             }
@@ -96,6 +106,40 @@ public class EditBudget extends AppCompatActivity {
 
     }
 
+
+    public void delete(View v){
+        upRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
+        upRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.hasChildren()){
+                    for (DataSnapshot ds : dataSnapshot.getChildren()){
+                        try{
+
+
+                            /*upRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
+                            upRef.setValue(enterbudget);*/
+                            ds.getRef().removeValue();
+                            Toast.makeText(getApplicationContext(),"Budget Deleted ", Toast.LENGTH_SHORT).show();
+
+                            Intent tomenu = new Intent(getBaseContext(),CreateBudgetMenu.class);
+                            startActivity(tomenu);
+
+                        }catch (NumberFormatException e){
+                            Toast.makeText(getApplicationContext(),"Delete Failed", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 
 }
