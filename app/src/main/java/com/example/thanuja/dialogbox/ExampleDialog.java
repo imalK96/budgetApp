@@ -67,11 +67,6 @@ public class ExampleDialog extends AppCompatDialogFragment {
 
                         listener.applyTexts(username, password);
 
-//                        View view1 = this.findViewById(android.R.id.content)).getChildAt(0);
-//                        final ViewGroup viewGroup = (ViewGroup) ((ViewGroup) this.findViewById(android.R.id.content)).getChildAt(0);
-//                        if(view1 == getView()){
-//
-//                        }
                         //database part added
                         dbRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense");
 

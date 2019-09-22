@@ -1,6 +1,8 @@
 package com.example.thanuja.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,10 +11,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imal.R;
+import com.example.thanuja.dialogbox.ExampleDialog;
 import com.example.thanuja.recyclerview.Expense;
 import com.example.thanuja.recyclerview.RecyclerViewAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,11 +34,16 @@ import java.util.List;
 public class FragmentDaily extends Fragment {
     View v;
     private RecyclerView myrecyclerview;
-    private List<Expense> lstContact;
+    private static List<Expense> lstContact;
+    static FirebaseUser user = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
 
         lstContact = new ArrayList<>();
 //        lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
@@ -42,8 +51,27 @@ public class FragmentDaily extends Fragment {
         FirebaseAuth firebaseAuth;
 
         firebaseAuth = FirebaseAuth.getInstance();
-        final FirebaseUser user = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
+//
+//        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
+//
+//        readRef.addListenerForSingleValueEvent(new ValueEventListener(){
+//            public void onDataChange(DataSnapshot dataSnapshot){
+//                for(DataSnapshot ds : dataSnapshot.getChildren()){
+//                    lstContact.add(new Expense(ds.child("discription").getValue().toString(), ds.child("amount").getValue().toString(), R.drawable.images));
+//                }
+//            }
+//
+//            public void onCancelled(DatabaseError databaseError){
+//
+//            }
+//        });
+        readData(getView());
 
+
+    }
+
+    public static void readData(View v){
         DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
 
         readRef.addListenerForSingleValueEvent(new ValueEventListener(){
