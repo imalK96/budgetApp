@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.example.Heshan.AddCategory;
+import com.example.thanuja.fragments.FragmentDaily;
 import com.example.thanuja.fragments.ThanujaMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void addCat(View v){
 
-
+        Intent addCategory = new Intent(getBaseContext(), AddCategory.class);
+        startActivity(addCategory);
     }
 
     //thanuja added

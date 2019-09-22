@@ -74,9 +74,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/login_emailHint"
                         android:layout_margin="10dp"
-                        android:textSize="28sp"/>
+                        android:text="@string/login_emailHint"
+                        android:textSize="28sp" />
 
                     <EditText
                         android:id="@+id/regEmail"
@@ -95,9 +95,9 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/login_pwHint"
                         android:layout_margin="10dp"
-                        android:textSize="28sp"/>
+                        android:text="@string/login_pwHint"
+                        android:textSize="28sp" />
 
                     <EditText
                         android:id="@+id/regPw"

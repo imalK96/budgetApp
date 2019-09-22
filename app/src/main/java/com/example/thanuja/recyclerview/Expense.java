@@ -36,4 +36,11 @@ public class Expense {
     public void setImage(int image) {
         this.image = image;
     }
+
+    //Overloaded constructor
+    public Expense(Expense e1){
+        this.expenseName = e1.expenseName;
+        this.amount = e1.amount;
+        this.image = e1.image;
+    }
 }

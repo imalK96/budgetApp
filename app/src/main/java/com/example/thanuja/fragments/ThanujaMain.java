@@ -1,10 +1,14 @@
 package com.example.thanuja.fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import com.example.imal.R;
 import com.example.thanuja.dialogbox.ExampleDialog;
@@ -39,19 +43,12 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
         viewPager.setAdapter(adapter);
         tablayout.setupWithViewPager(viewPager);
 
+
         tablayout.getTabAt(0).setIcon(R.drawable.add_catergory);
         tablayout.getTabAt(1).setIcon(R.drawable.bitcoin);
         tablayout.getTabAt(2).setIcon(R.drawable.cat);
 
-        //Remove shadow from action bar
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setElevation(0);
-
-
         FloatingActionButton fab = findViewById(R.id.fab);
-
-//        textViewUsername = findViewById(R.id.textview_username);
-//        textViewPassword = findViewById(R.id.textview_password);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +61,7 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
 
     public void openDialog(){
         ExampleDialog exampleDialog = new ExampleDialog();
-        exampleDialog.show(getSupportFragmentManager(), "example dialog");
+        exampleDialog.showNow(getSupportFragmentManager(), "example dialog");
     }
 
     @Override

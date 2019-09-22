@@ -14,6 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.imal.R;
 import com.example.thanuja.recyclerview.Expense;
 import com.example.thanuja.recyclerview.RecyclerViewAdapter;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +40,7 @@ public class FragmentMonthly extends Fragment {
         lstContact.add(new Expense("Water bill", "Rs. 6000", R.drawable.dollar));
         lstContact.add(new Expense("Internet bill", "Rs. 8000", R.drawable.dollar));
         lstContact.add(new Expense("PeoTV bill", "Rs. 4000", R.drawable.dollar));
-        lstContact.add(new Expense("Current bill", "Rs. 2000", R.drawable.dollar));
-        lstContact.add(new Expense("Electricity bill", "Rs. 5000", R.drawable.dollar));
-        lstContact.add(new Expense("Water bill", "Rs. 6000", R.drawable.dollar));
-        lstContact.add(new Expense("Internet bill", "Rs. 8000", R.drawable.dollar));
-        lstContact.add(new Expense("PeoTV bill", "Rs. 4000", R.drawable.dollar));
+
     }
 
     @Nullable
