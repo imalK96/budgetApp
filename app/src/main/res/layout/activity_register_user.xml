@@ -22,13 +22,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Register"
-                android:textColor="#FFFFFF"
-                android:textSize="34sp"
-                android:gravity="center"
                 android:layout_marginTop="150dp"
                 android:layout_marginBottom="20dp"
-                />
+                android:gravity="center"
+                android:text="@string/registerTitle"
+                android:textColor="#FFFFFF"
+                android:textSize="34sp" />
 
 
         </RelativeLayout>
@@ -54,13 +53,16 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Name"
                         android:layout_margin="10dp"
-                        android:textSize="28sp"/>
+                        android:text="@string/displayname"
+                        android:textSize="28sp" />
+
                     <EditText
+                        android:id="@+id/regDisplayName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="xzy@gmail.com"/>
+                        android:hint="@string/nameHint"
+                        android:inputType="textPersonName" />
 
                 </LinearLayout>
 
@@ -75,10 +77,13 @@
                         android:text="@string/login_emailHint"
                         android:layout_margin="10dp"
                         android:textSize="28sp"/>
+
                     <EditText
+                        android:id="@+id/regEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="xzy@gmail.com"/>
+                        android:hint="@string/emailHint"
+                        android:inputType="textEmailAddress" />
 
                 </LinearLayout>
 
@@ -93,10 +98,13 @@
                         android:text="@string/login_pwHint"
                         android:layout_margin="10dp"
                         android:textSize="28sp"/>
+
                     <EditText
+                        android:id="@+id/regPw"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="xzy@gmail.com"/>
+                        android:hint="@string/passwordHint"
+                        android:inputType="textPassword" />
 
                 </LinearLayout>
 
@@ -106,13 +114,14 @@
                     android:orientation="vertical">
 
                     <Button
+                        android:id="@+id/regBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
+                        android:background="@color/colorAccent"
                         android:text="@string/reg_btn"
-                        android:textSize="20sp"
                         android:textColor="#FFFFFF"
-                        android:background="@color/colorAccent"/>
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
