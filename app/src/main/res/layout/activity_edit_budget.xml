@@ -76,7 +76,7 @@
             <Button
                 android:id="@+id/updatebudget"
                 android:layout_width="187dp"
-                android:layout_height="47dp"
+                android:layout_height="52dp"
                 android:layout_gravity="bottom"
                 android:layout_marginHorizontal="100dp"
                 android:layout_marginStart="208dp"
