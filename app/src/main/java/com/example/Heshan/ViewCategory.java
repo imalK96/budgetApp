@@ -140,6 +140,7 @@ public class ViewCategory extends AppCompatActivity {
 
                     Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
                     startActivity(i1);
+                    //customListView.notifyDataSetChanged();
 
                 }
 
