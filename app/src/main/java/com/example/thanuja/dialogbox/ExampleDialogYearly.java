@@ -5,34 +5,23 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import com.example.imal.R;
-import com.example.thanuja.fragments.FragmentDaily;
 import com.example.thanuja.fragments.ThanujaMain;
 import com.example.thanuja.model.DailyExpense;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
-public class ExampleDialog extends AppCompatDialogFragment {
+public class ExampleDialogYearly extends AppCompatDialogFragment {
     private EditText discription;
     private EditText amount;
     private  ExampleDialogListener listener;
@@ -72,7 +61,7 @@ public class ExampleDialog extends AppCompatDialogFragment {
                         listener.applyTexts(username, password);
 
                         //database part added
-                        dbRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense");
+                        dbRef = FirebaseDatabase.getInstance().getReference().child("Yearly Expense");
 
                         de.setDiscription(discription.getText().toString().trim());
                         de.setAmount(Float.parseFloat(amount.getText().toString().trim()));

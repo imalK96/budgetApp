@@ -12,16 +12,24 @@ import android.widget.FrameLayout;
 
 import com.example.imal.R;
 import com.example.thanuja.dialogbox.ExampleDialog;
+import com.example.thanuja.dialogbox.ExampleDialogMonthly;
+import com.example.thanuja.dialogbox.ExampleDialogYearly;
 import com.example.thanuja.fragments.FragmentDaily;
 import com.example.thanuja.fragments.FragmentMonthly;
 import com.example.thanuja.fragments.FragmentYearly;
 import com.example.thanuja.fragments.ViewPagerAdapter;
+import com.example.thanuja.recyclerview.Expense;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import static com.example.imal.R.string.thanuja_daily;
 
-public class ThanujaMain extends AppCompatActivity implements ExampleDialog.ExampleDialogListener{
+public class ThanujaMain extends AppCompatActivity implements ExampleDialog.ExampleDialogListener, ExampleDialogMonthly.ExampleDialogListener, ExampleDialogYearly.ExampleDialogListener {
     private TabLayout tablayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
@@ -48,21 +56,20 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
         tablayout.getTabAt(1).setIcon(R.drawable.bitcoin);
         tablayout.getTabAt(2).setIcon(R.drawable.cat);
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openDialog();
-            }
-        });
-
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openDialog();
+//            }
+//        });
     }
 
-    public void openDialog(){
-        ExampleDialog exampleDialog = new ExampleDialog();
-        exampleDialog.showNow(getSupportFragmentManager(), "example dialog");
-    }
+//    public void openDialog(){
+//        ExampleDialog exampleDialog = new ExampleDialog();
+//        exampleDialog.showNow(getSupportFragmentManager(), "example dialog");
+//    }
 
     @Override
     public void applyTexts(String username, String password) {

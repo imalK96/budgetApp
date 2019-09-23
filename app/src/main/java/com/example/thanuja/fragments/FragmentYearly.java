@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imal.R;
+import com.example.thanuja.dialogbox.ExampleDialogMonthly;
+import com.example.thanuja.dialogbox.ExampleDialogYearly;
 import com.example.thanuja.recyclerview.Expense;
 import com.example.thanuja.recyclerview.RecyclerViewAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +32,7 @@ public class FragmentYearly extends Fragment {
     View v;
     private RecyclerView myrecyclerview;
     private List<Expense> lstContact;
+    static FirebaseUser user = null;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +42,28 @@ public class FragmentYearly extends Fragment {
         lstContact.add(new Expense("Boarding fee", "Rs. 5000", R.drawable.ic_cash));
         lstContact.add(new Expense("Semester fee", "Rs. 145000", R.drawable.ic_cash));
 
+        FirebaseAuth firebaseAuth;
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+        readData();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        FloatingActionButton fab = getView().findViewById(R.id.fabYearly);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openDialog();
+            }
+        });
+    }
+
+    public void openDialog(){
+        ExampleDialogYearly exampleDialogYearly = new ExampleDialogYearly();
+        exampleDialogYearly.showNow(getFragmentManager(), "example dialog yearly");
     }
 
     @Nullable
@@ -51,5 +77,20 @@ public class FragmentYearly extends Fragment {
         myrecyclerview.setAdapter(recyclerAdapter);
 
         return v;
+    }
+
+    public void readData(){
+        DatabaseReference readRef = FirebaseDatabase.getInstance().getReference().child("Yearly Expense").child(user.getUid());
+        readRef.addListenerForSingleValueEvent(new ValueEventListener(){
+            public void onDataChange(DataSnapshot dataSnapshot){
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    lstContact.add(new Expense(ds.child("discription").getValue().toString(), ds.child("amount").getValue().toString(), R.drawable.ic_cash));
+                }
+            }
+
+            public void onCancelled(DatabaseError databaseError){
+
+            }
+        });
     }
 }

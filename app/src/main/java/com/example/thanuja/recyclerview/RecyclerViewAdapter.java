@@ -101,7 +101,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                                         mContext.startActivity(i);
                                     }
                                 }
-
                             }
 
                             public void onCancelled(DatabaseError databaseError){
