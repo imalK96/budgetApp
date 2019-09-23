@@ -18,6 +18,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imal.MainActivity;
 import com.example.imal.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -42,7 +43,22 @@ public class ViewCategory extends AppCompatActivity {
     categoryAdapter catAdapter;
     int flag ;
     Integer imgId = R.drawable.bug;
+    private long backPressedTime;
 
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime +  2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }
+        else {
+
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +156,7 @@ public class ViewCategory extends AppCompatActivity {
 
                     Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
                     startActivity(i1);
-                    //customListView.notifyDataSetChanged();
+//                    customListView.notifyDataSetChanged();
 
                 }
 
@@ -165,6 +181,8 @@ public class ViewCategory extends AppCompatActivity {
 
             }
         });
+
+
 
   }
 
