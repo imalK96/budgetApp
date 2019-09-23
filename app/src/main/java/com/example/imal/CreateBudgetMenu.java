@@ -50,6 +50,8 @@ public class CreateBudgetMenu extends AppCompatActivity {
                     Intent enterBudget = new Intent(getBaseContext(),EnterIncome.class);
                     startActivity(enterBudget);
 
+
+                    //Thanuja added
                     readRef = FirebaseDatabase.getInstance().getReference().child("Yearly Expense").child(user.getUid());
                     readRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
@@ -107,6 +109,7 @@ public class CreateBudgetMenu extends AppCompatActivity {
             }
         });
     }
+    //up to here
 
     public void editBudget(View v){
         readRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());

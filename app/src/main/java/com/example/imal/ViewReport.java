@@ -33,10 +33,13 @@ public class ViewReport extends AppCompatActivity {
         reportbuddis= findViewById(R.id.reportbuddis);
         reportbaldis= findViewById(R.id.reportbaldis);
         reportexpdis = findViewById(R.id.reportexpdis);
+        reportbaldis = findViewById(R.id.reportbaldis);
         show();
     }
 
     public  void show(){
+        final double[] totbud = new double[1];
+
         readRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
         readRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -45,8 +48,8 @@ public class ViewReport extends AppCompatActivity {
                 if (dataSnapshot.hasChildren()){
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-                        double totbud = Double.parseDouble((ds.child("salary").getValue().toString()))+Double.parseDouble((ds.child("income").getValue().toString()))+ Double.parseDouble((ds.child("interest").getValue().toString()));
-                        reportbuddis.setText(Double.toString(totbud));
+                        totbud[0] = Double.parseDouble((ds.child("salary").getValue().toString()))+Double.parseDouble((ds.child("income").getValue().toString()))+ Double.parseDouble((ds.child("interest").getValue().toString()));
+                        reportbuddis.setText(Double.toString(totbud[0]));
                     }
                 }else{
                     Toast.makeText(getApplicationContext(),"No Data to Display",Toast.LENGTH_SHORT).show();
@@ -60,13 +63,15 @@ public class ViewReport extends AppCompatActivity {
             }
         });
 
-        final double[] totSal = new double[1];
+
+        //Thanuja added code from here
+        final double[] totexp = new double[1];
 
         DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
         delRef.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(DataSnapshot dataSnapshot){
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    totSal[0] = totSal[0] + Double.parseDouble(ds.child("amount").getValue().toString());
+                    totexp[0] = totexp[0] + Double.parseDouble(ds.child("amount").getValue().toString());
                 }
 
             }
@@ -77,10 +82,10 @@ public class ViewReport extends AppCompatActivity {
         });
 
         DatabaseReference delRef1 = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
-        delRef.addListenerForSingleValueEvent(new ValueEventListener(){
+        delRef1.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(DataSnapshot dataSnapshot){
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    totSal[0] = totSal[0] + Double.parseDouble(ds.child("amount").getValue().toString());
+                    totexp[0] = totexp[0] + Double.parseDouble(ds.child("amount").getValue().toString());
                 }
 
             }
@@ -91,18 +96,22 @@ public class ViewReport extends AppCompatActivity {
         });
 
         DatabaseReference delRef2 = FirebaseDatabase.getInstance().getReference().child("Yearly Expense").child(user.getUid());
-        delRef.addListenerForSingleValueEvent(new ValueEventListener(){
+        delRef2.addListenerForSingleValueEvent(new ValueEventListener(){
             public void onDataChange(DataSnapshot dataSnapshot){
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
-                    totSal[0] = totSal[0] + Double.parseDouble(ds.child("amount").getValue().toString());
+                    totexp[0] = totexp[0] + Double.parseDouble(ds.child("amount").getValue().toString());
                 }
 
-                reportexpdis.setText(Double.toString(totSal[0]));
+                reportexpdis.setText(Double.toString(totexp[0]));
+                Double balance = totbud[0] - totexp[0];
+                reportbaldis.setText(Double.toString(balance));
             }
 
             public void onCancelled(DatabaseError databaseError){
 
             }
         });
+
+
     }
 }
