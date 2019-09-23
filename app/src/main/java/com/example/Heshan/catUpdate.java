@@ -25,6 +25,23 @@ public class catUpdate extends AppCompatActivity {
     DatabaseReference ref;
     Module module;
     Category cat;
+    private long backPressedTime;
+
+
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime +  2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }
+        else {
+            //Toast.makeText(getBaseContext(),"Press again to go to view the Items",Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(getApplicationContext(),ViewCategory.class);
+            startActivity(i);
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +55,10 @@ public class catUpdate extends AppCompatActivity {
         ref = database.getReference("Category");
         module = (Module)getApplicationContext();
 
+
         Intent i1 = getIntent();
         final String i = i1.getStringExtra("idValue");
+
 
 
         ref.addValueEventListener(new ValueEventListener() {

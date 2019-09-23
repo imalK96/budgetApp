@@ -5,15 +5,20 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.imal.MainActivity;
 import com.example.imal.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -35,8 +40,25 @@ public class ViewCategory extends AppCompatActivity {
     Category cat;
     Button b1,b2;
     Module module;
+    categoryAdapter catAdapter;
+    int flag ;
+    Integer imgId = R.drawable.bug;
+    private long backPressedTime;
 
 
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime +  2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }
+        else {
+
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,17 +72,20 @@ public class ViewCategory extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Category");
         list = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
+        final customListView customListView = new customListView(this,list,imgId);
 
-
+        //catAdapter = new categoryAdapter(this);
+        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
+        //listView.setAdapter(new ArrayAdapter<String>(this,R.layout.custom_cell,list));
+            listView.setAdapter(customListView);
 
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 String value = dataSnapshot.getValue(Category.class).toString();
                 list.add(value);
-                adapter.notifyDataSetChanged();
+                customListView.notifyDataSetChanged();
+
             }
 
             @Override
@@ -88,7 +113,7 @@ public class ViewCategory extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
+                flag = i;
                //module.setGvalue_Id(list.get(i));
                 cat.setCatID(list.get(i).substring(0,7));
 
@@ -131,6 +156,7 @@ public class ViewCategory extends AppCompatActivity {
 
                     Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
                     startActivity(i1);
+//                    customListView.notifyDataSetChanged();
 
                 }
 
@@ -156,6 +182,49 @@ public class ViewCategory extends AppCompatActivity {
             }
         });
 
+
+
+  }
+
+  public class categoryAdapter extends BaseAdapter{
+
+        Context context;
+
+      public categoryAdapter(Context context) {
+          this.context = context;
+      }
+
+      @Override
+      public int getCount() {
+          return list.size();
+      }
+
+      @Override
+      public Object getItem(int i) {
+          return i;
+      }
+
+      @Override
+      public long getItemId(int i) {
+          return 0;
+      }
+
+      @Override
+      public View getView(int i, View view, ViewGroup viewGroup) {
+          View rowView = View.inflate(context,R.layout.custom_cell,null);
+          TextView nameText = rowView.findViewById(R.id.nameText);
+
+          if(flag == i){
+              nameText.setTextColor(getResources().getColor(R.color.colorPrimary));
+              nameText.setBackgroundColor(getResources().getColor(R.color.design_default_color_primary));
+          }
+
+          nameText.setText(list.toString());
+
+
+
+          return rowView;
+      }
   }
 
   public void click(View view){

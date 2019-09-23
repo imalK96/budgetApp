@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/cbmenu"
-            android:layout_width="358dp"
+            android:layout_width="307dp"
             android:layout_height="71dp"
             android:layout_gravity="bottom"
             android:layout_marginHorizontal="100dp"
@@ -46,12 +46,14 @@
 
         <Button
             android:id="@+id/ubmenu"
-            android:layout_width="358dp"
+            android:layout_width="307dp"
             android:layout_height="71dp"
             android:layout_gravity="bottom"
             android:layout_marginHorizontal="100dp"
             android:layout_marginVertical="10dp"
             android:layout_marginStart="24dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:backgroundTint="#3240A0"
             android:onClick="editBudget"
             android:paddingHorizontal="66dp"
