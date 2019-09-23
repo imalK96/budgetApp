@@ -55,6 +55,9 @@
     <string name="sddis">Start Date</string>
     <string name="eddis">End Date</string>
     <string name="dtod">  to  </string>
+    <string name="reportbudget">Total Budget</string>
+    <string name="reportexpenses">Total Expenses</string>
+    <string name="reportbal">Balance</string>
 
 
     <string name="thanuja_addexpenses">Add expenses</string>

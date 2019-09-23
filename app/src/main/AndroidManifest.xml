@@ -12,6 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ViewReport"></activity>
+        <activity android:name=".EditBudget" />
 
         <activity android:name=".updateCredentials"></activity>
 
@@ -19,7 +21,6 @@
         <activity android:name="com.example.Heshan.ViewCategory" />
         <activity android:name="com.example.Heshan.AddCategory" />
 
-        <activity android:name=".EditBudget"></activity>
         <activity android:name=".CreateBudgetMenu" />
         <activity android:name="com.example.thanuja.fragments.ThanujaMain" />
         <activity android:name="com.example.imal.registerUser" />

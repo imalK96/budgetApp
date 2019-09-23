@@ -106,17 +106,9 @@ public class CreateBudgetMenu extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
 
     public void editBudget(View v){
-
-
-
         readRef = FirebaseDatabase.getInstance().getReference().child("Budget").child(user.getUid());
         readRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -137,8 +129,5 @@ public class CreateBudgetMenu extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 }
