@@ -47,6 +47,6 @@ public class Category {
 
     public String toString(){
 
-        return  this.catID + " " + this.catName + " " + this.amount;
+        return  this.catID + "\n"+ "Category Name = " + this.catName + "\n" + "Amount = " + this.amount + "\n";
     }
 }
