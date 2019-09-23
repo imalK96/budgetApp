@@ -51,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(addCategory);
     }
 
+    public void viewreports(View v){
+
+        Intent addCategory = new Intent(getBaseContext(), ViewReport.class);
+        startActivity(addCategory);
+    }
+
     //thanuja added
     public void addExpensesNav(View v){
         Intent addExpIntent = new Intent(this, ThanujaMain.class);

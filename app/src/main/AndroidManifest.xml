@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EditBudget"></activity>
+        <activity android:name=".ViewReport"></activity>
+        <activity android:name=".EditBudget" />
         <activity android:name=".CreateBudgetMenu" />
         <activity android:name=".updateCredentials" />
         <activity android:name="com.example.thanuja.fragments.ThanujaMain" />
