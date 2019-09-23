@@ -23,7 +23,8 @@ public class EditBudget extends AppCompatActivity {
     DatabaseReference readRef,upRef;
     EnterBudgetDB enterbudget;
     FirebaseUser user =null;/*3*/
-    TextView etsal, etother, etbank;
+    TextView etsal, etother, etbank, edis, sddis, totb;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,9 @@ public class EditBudget extends AppCompatActivity {
         etsal = findViewById(R.id.etsalaryedit);
         etother = findViewById(R.id.etotheredit);
         etbank = findViewById(R.id.etbankedit);
+        edis = findViewById(R.id.eddisplay);
+        sddis = findViewById(R.id.sddisplay);
+        totb = findViewById(R.id.totbdis);
         show();
 
     }
@@ -47,10 +51,13 @@ public class EditBudget extends AppCompatActivity {
                 if (dataSnapshot.hasChildren()){
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-
+                        edis.setText(ds.child("enddate").getValue().toString());
+                        sddis.setText(ds.child("startdate").getValue().toString());
                         etsal.setText(ds.child("salary").getValue().toString());
                         etother.setText(ds.child("income").getValue().toString());
                         etbank.setText(ds.child("interest").getValue().toString());
+                        double totbud = Double.parseDouble(etsal.getText().toString())+ Double.parseDouble(etother.getText().toString())+ Double.parseDouble(etbank.getText().toString());
+                        totb.setText("Total Budget - " + totbud);
 
                     }
 
@@ -78,6 +85,8 @@ public class EditBudget extends AppCompatActivity {
                         try{
 
                             EnterBudgetDB enterbudget = new EnterBudgetDB();
+                            enterbudget.setStartdate(sddis.getText().toString().trim());
+                            enterbudget.setEnddate(edis.getText().toString().trim());
                             enterbudget.setSalary(Double.parseDouble(etsal.getText().toString().trim()));
                             enterbudget.setIncome(Double.parseDouble(etother.getText().toString().trim()));
                             enterbudget.setInterest(Double.parseDouble(etbank.getText().toString().trim()));

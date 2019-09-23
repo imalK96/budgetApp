@@ -65,8 +65,13 @@ public class EnterIncome extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference().child("Budget");
 
         try{
+
             if (TextUtils.isEmpty(etsal.getText().toString()))
                 Toast.makeText(this, "Fill All Fields,  If Null Use 0", Toast.LENGTH_SHORT).show();
+            else if (TextUtils.isEmpty(cvsds))
+                Toast.makeText(this, "Select a Start Date", Toast.LENGTH_SHORT).show();
+            else if (TextUtils.isEmpty(cveds))
+                Toast.makeText(this, "Select a End Date", Toast.LENGTH_SHORT).show();
             else if (TextUtils.isEmpty(etother.getText().toString()))
                 Toast.makeText(this, "Fill All Fields,  If Null Use 0", Toast.LENGTH_SHORT).show();
             else if (TextUtils.isEmpty(etbank.getText().toString()))

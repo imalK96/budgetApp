@@ -51,5 +51,9 @@
     <string name="editbudget">Edit Budget</string>
     <string name="updatebudget">Update</string>
     <string name="delbudget">Delete</string>
+    <string name="sddis">Start Date</string>
+    <string name="eddis">End Date</string>
+    <string name="dtod">  to  </string>
+
 
 </resources>
