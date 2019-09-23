@@ -141,7 +141,6 @@
                             android:onClick="updateNav"
                             android:text="@string/editProfileBtn"
                             android:textColor="#FFFFFF"
-
                             android:textSize="18sp" />
 
                     </LinearLayout>

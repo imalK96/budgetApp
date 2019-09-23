@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bgapps"
+    tools:context=".EditBudget">
+
+    <LinearLayout
+        android:id="@+id/totbudget"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="255dp"
+            android:padding="40dp"
+            android:text="@string/editbudget"
+            android:textAlignment="center"
+            android:textColor="#f3f3f3"
+            android:textSize="40sp" />
+
+
+        <TextView
+            android:id="@+id/sddisplay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/sddis"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dtod"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/eddisplay"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:hint="@string/eddis"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/totbdis"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/etsalaryedit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="71dp"
+            android:hint="@string/insert_salary" />
+
+        <EditText
+            android:id="@+id/etotheredit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/insert_other" />
+
+        <EditText
+            android:id="@+id/etbankedit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/insert_bank" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="99dp">
+
+            <Button
+                android:id="@+id/updatebudget"
+                android:layout_width="187dp"
+                android:layout_height="52dp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginStart="208dp"
+                android:layout_marginEnd="8dp"
+                android:backgroundTint="#3240A0"
+
+                android:onClick="updatebudget"
+                android:paddingHorizontal="66dp"
+                android:text="@string/updatebudget"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/deletebudget"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <Button
+                android:id="@+id/deletebudget"
+                android:layout_width="187dp"
+                android:layout_height="52dp"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="100dp"
+                android:layout_marginEnd="212dp"
+                android:backgroundTint="@color/warningBtn"
+                android:onClick="delete"
+                android:paddingHorizontal="66dp"
+                android:text="@string/delbudget"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:layout_editor_absoluteY="-1dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -39,11 +39,11 @@ public class FragmentMonthly extends Fragment {
         super.onCreate(savedInstanceState);
 
         lstContact = new ArrayList<>();
-        lstContact.add(new Expense("Current bill", "Rs. 2000", R.drawable.dollar));
-        lstContact.add(new Expense("Electricity bill", "Rs. 5000", R.drawable.dollar));
-        lstContact.add(new Expense("Water bill", "Rs. 6000", R.drawable.dollar));
-        lstContact.add(new Expense("Internet bill", "Rs. 8000", R.drawable.dollar));
-        lstContact.add(new Expense("PeoTV bill", "Rs. 4000", R.drawable.dollar));
+//        lstContact.add(new Expense("Current bill", "Rs. 2000", R.drawable.dollar));
+//        lstContact.add(new Expense("Electricity bill", "Rs. 5000", R.drawable.dollar));
+//        lstContact.add(new Expense("Water bill", "Rs. 6000", R.drawable.dollar));
+//        lstContact.add(new Expense("Internet bill", "Rs. 8000", R.drawable.dollar));
+//        lstContact.add(new Expense("PeoTV bill", "Rs. 4000", R.drawable.dollar));
 
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();

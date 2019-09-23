@@ -26,14 +26,14 @@ public class registerUser extends AppCompatActivity implements android.view.View
 
     private ProgressDialog regProgress;
 
-    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth firebaseAuth; /*1*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
-        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance(); /*2*/
 
         if(firebaseAuth.getCurrentUser() != null){
             //go to dashboard

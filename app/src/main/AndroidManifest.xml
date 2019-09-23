@@ -19,14 +19,16 @@
         <activity android:name="com.example.Heshan.ViewCategory" />
         <activity android:name="com.example.Heshan.AddCategory" />
 
+        <activity android:name=".EditBudget"></activity>
+        <activity android:name=".CreateBudgetMenu" />
         <activity android:name="com.example.thanuja.fragments.ThanujaMain" />
         <activity android:name="com.example.imal.registerUser" />
         <activity android:name="com.example.imal.userProfile" />
         <activity android:name="com.example.imal.MainActivity" />
-        <activity android:name="com.example.imal.CreateBudget" />
-        <activity android:name="com.example.imal.CreateBudget1" />
         <activity android:name="com.example.imal.EnterIncome" />
-        <activity android:name="com.example.imal.LoginActivity">
+
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

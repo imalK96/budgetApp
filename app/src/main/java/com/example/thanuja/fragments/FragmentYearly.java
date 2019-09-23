@@ -39,8 +39,8 @@ public class FragmentYearly extends Fragment {
         super.onCreate(savedInstanceState);
 
         lstContact = new ArrayList<>();
-        lstContact.add(new Expense("Boarding fee", "Rs. 5000", R.drawable.ic_cash));
-        lstContact.add(new Expense("Semester fee", "Rs. 145000", R.drawable.ic_cash));
+//        lstContact.add(new Expense("Boarding fee", "Rs. 5000", R.drawable.ic_cash));
+//        lstContact.add(new Expense("Semester fee", "Rs. 145000", R.drawable.ic_cash));
 
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();

@@ -36,6 +36,11 @@
     <string name="next">Next</string>
     <string name="next1">Next</string>
     <string name="add">ADD</string>
+    <string name="createbudgetmenu">Create Budget</string>
+    <string name="deletebudgetmenu">Delete Budget</string>
+    <string name="viewbudgetmenu">View Budget</string>
+    <string name="updatebudgetmenu">Edit Budget</string>
+    <string name="planbudget">Plan Budget</string>
     <string name="deleteUser">Delete</string>
     <string name="deleteUserPrompt">Are you sure you want to delete your profile?</string>
     <string name="deleteUserCancel">Cancel</string>
@@ -44,6 +49,13 @@
     <string name="nameHint">Enter display name</string>
     <string name="emailHint">johndoe@gmail.com</string>
     <string name="passwordHint">Enter Password (8 characters minimum)</string>
+    <string name="editbudget">Edit Budget</string>
+    <string name="updatebudget">Update</string>
+    <string name="delbudget">Delete</string>
+    <string name="sddis">Start Date</string>
+    <string name="eddis">End Date</string>
+    <string name="dtod">  to  </string>
+
 
     <string name="thanuja_addexpenses">Add expenses</string>
     <string name="thanuja_addexpense">Add expense</string>

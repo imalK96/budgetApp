@@ -45,7 +45,7 @@ public class FragmentDaily extends Fragment {
         super.onCreate(savedInstanceState);
 
         lstContact = new ArrayList<>();
-        lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
+        //lstContact.add(new Expense("Gave to Imal", "Rs. 2000", R.drawable.images));
 
         FirebaseAuth firebaseAuth;
         firebaseAuth = FirebaseAuth.getInstance();
