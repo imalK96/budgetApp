@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.imal">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.example.Heshan.Module"
         android:allowBackup="true"
@@ -10,17 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".updateCredentials"></activity>
+
         <activity android:name="com.example.Heshan.catUpdate"></activity>
         <activity android:name="com.example.Heshan.ViewCategory" />
         <activity android:name="com.example.Heshan.AddCategory" />
+
         <activity android:name="com.example.thanuja.fragments.ThanujaMain" />
-        <activity android:name=".registerUser" />
-        <activity android:name=".userProfile" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".CreateBudget" />
-        <activity android:name=".CreateBudget1" />
-        <activity android:name=".EnterIncome" />
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.example.imal.registerUser" />
+        <activity android:name="com.example.imal.userProfile" />
+        <activity android:name="com.example.imal.MainActivity" />
+        <activity android:name="com.example.imal.CreateBudget" />
+        <activity android:name="com.example.imal.CreateBudget1" />
+        <activity android:name="com.example.imal.EnterIncome" />
+        <activity android:name="com.example.imal.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

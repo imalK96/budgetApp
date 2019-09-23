@@ -9,17 +9,35 @@ import android.widget.LinearLayout;
 
 import com.example.Heshan.AddCategory;
 import com.example.thanuja.fragments.ThanujaMain;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
     //private CardView profileCard;
     private LinearLayout l1;
 
+    private FirebaseAuth firebaseAuth;
+    private DatabaseReference databaseReference;
+
+    private String name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         l1 = findViewById(R.id.profile);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        if (firebaseAuth.getCurrentUser() == null){
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+
 
     }
 
@@ -43,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
         Intent sdBudget = new Intent(getBaseContext(),CreateBudget.class);
         startActivity(sdBudget);
     }
+
+
+    public void Logout(View v){
+        Intent logoutIntent = new Intent(getBaseContext(),LoginActivity.class);
+        startActivity(logoutIntent);
+
+        firebaseAuth.signOut();
+        finish();
+        startActivity(new Intent(this, LoginActivity.class));
+    }
+
     public void addCategory(View v){
         Intent c1 = new Intent(getBaseContext(), AddCategory.class);
         startActivity(c1);
