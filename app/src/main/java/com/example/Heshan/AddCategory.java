@@ -75,8 +75,14 @@ public class AddCategory extends AppCompatActivity {
               Toast.makeText(getApplicationContext(), "Amount field is Empty", Toast.LENGTH_SHORT).show();
           } else {
 
+              String arr[] = t1.getText().toString().split("");
+              String s2 = "";
 
-              String catName = t1.getText().toString().trim();
+              for(int i = 0; i < arr.length ; i++){
+                  s2 += arr[i];
+              }
+
+              String catName = s2;
               String catAmount = t2.getText().toString().trim();
 
               Category cat = new Category(catName, catAmount);

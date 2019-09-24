@@ -94,4 +94,10 @@
     <string name="AddCat">Insert</string>
     <string name="updateCategory">Update Category</string>
     <string name="catAddExp">Add Expense</string>
+    <string name="tempPassword">12345678</string>
+    <string name="updateCredentials">Update Credentials</string>
+    <string name="currentEmail">Current Email</string>
+    <string name="currentPwUpdate">Current Password</string>
+    <string name="newEmailUpdate">New Email</string>
+    <string name="newPassword">New Password</string>
 </resources>
