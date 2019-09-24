@@ -96,7 +96,7 @@ public class EditBudget extends AppCompatActivity {
                             ds.getRef().setValue(enterbudget);
                             Toast.makeText(getApplicationContext(),"Data Updated", Toast.LENGTH_SHORT).show();
 
-                            Intent tomenu = new Intent(getBaseContext(),CreateBudgetMenu.class);
+                            Intent tomenu = new Intent(getBaseContext(),MainActivity.class);
                             startActivity(tomenu);
 
                         }catch (NumberFormatException e){
@@ -131,7 +131,7 @@ public class EditBudget extends AppCompatActivity {
                             ds.getRef().removeValue();
                             Toast.makeText(getApplicationContext(),"Budget Deleted ", Toast.LENGTH_SHORT).show();
 
-                            Intent tomenu = new Intent(getBaseContext(),CreateBudgetMenu.class);
+                            Intent tomenu = new Intent(getBaseContext(),MainActivity.class);
                             startActivity(tomenu);
 
                         }catch (NumberFormatException e){
