@@ -20,6 +20,9 @@ import android.widget.Toast;
 
 import com.example.imal.MainActivity;
 import com.example.imal.R;
+import com.example.thanuja.model.DailyExpense;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +47,7 @@ public class ViewCategory extends AppCompatActivity {
     int flag ;
     Integer imgId = R.drawable.bug;
     private long backPressedTime;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -69,8 +73,12 @@ public class ViewCategory extends AppCompatActivity {
         b2 = findViewById(R.id.catDelete);
         cat = new Category();
         listView = (ListView) findViewById(R.id.listView1);
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Category");
+        ref = FirebaseDatabase.getInstance().getReference().child("Category").child(user.getUid());
+
+
         list = new ArrayList<>();
         final customListView customListView = new customListView(this,list,imgId);
 
@@ -82,9 +90,11 @@ public class ViewCategory extends AppCompatActivity {
         ref.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                try{
                 String value = dataSnapshot.getValue(Category.class).toString();
                 list.add(value);
                 customListView.notifyDataSetChanged();
+                }catch (Exception e){}
 
             }
 
@@ -113,11 +123,13 @@ public class ViewCategory extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                flag = i;
+                //flag = i;
                //module.setGvalue_Id(list.get(i));
-                cat.setCatID(list.get(i).substring(0,7));
+                String a[] = list.get(i).toString().split(" ", 2);
+                cat.setCatName(a[0]);
+                cat.setAmount(a[1]);
 
-                Toast.makeText(getApplicationContext(),"Item Selected",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Item selected",Toast.LENGTH_SHORT).show();
                //Toast.makeText(getApplicationContext(),module.getGvalue_Id(),Toast.LENGTH_SHORT).show();
                //module.setGvalue_Name(list.get(i));
                 //cat.setCatID(String.valueOf(list.get(i)));
@@ -129,33 +141,47 @@ public class ViewCategory extends AppCompatActivity {
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String str = cat.getCatID();
+                //final String str = cat.getCatID();
 //                Toast.makeText(getApplicationContext(),cat.getCatID().substring(0,19),Toast.LENGTH_SHORT).show();
                // final String str = cat.getCatID();
 
                 //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
-                if(cat.catID == ""){
+                final String str = cat.getCatName();
+                final String amount = cat.getAmount();
+                if(cat.getCatName() == ""){
 
                     Toast.makeText(getApplicationContext(),"Please Select Item before delete!",Toast.LENGTH_SHORT).show();
 
                 }else{
 
-                    ref.child("Category").child(str).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            ref.child(str).removeValue();
-                            ref.child(str).child("catName").getKey();
-                        }
+                   final  DatabaseReference delref = FirebaseDatabase.getInstance().getReference().child("Category").child(user.getUid());
+                   delref.addListenerForSingleValueEvent(new ValueEventListener() {
+                       @Override
+                       public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                           for(DataSnapshot ds : dataSnapshot.getChildren()){
+                               String datname = ds.child("catName").getValue().toString();
+                               String datamount = ds.child("amount").getValue().toString();
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                               if(str.equalsIgnoreCase(datname)){
+                                   ds.getRef().removeValue();
+                                   Toast.makeText(getApplicationContext(),"Data deleted successfully!",Toast.LENGTH_SHORT).show();
+                                   Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
+                                    startActivity(i1);
+                                    customListView.notifyDataSetChanged();
 
-                        }
-                    });
-                    Toast.makeText(getApplicationContext(),"Category is deleted",Toast.LENGTH_SHORT).show();
+                               }
+                           }
+                       }
 
-                    Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
-                    startActivity(i1);
+                       @Override
+                       public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                       }
+                   });
+//                    Toast.makeText(getApplicationContext(),"Category is deleted",Toast.LENGTH_SHORT).show();
+//
+//                    Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
+//                    startActivity(i1);
 //                    customListView.notifyDataSetChanged();
 
                 }
@@ -167,9 +193,11 @@ public class ViewCategory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(cat.catID != ""){
+                if(cat.getCatName() != ""){
                 Intent i2 = new Intent(getBaseContext(),catUpdate.class);
-                i2.putExtra("idValue",cat.getCatID());
+                i2.putExtra("idValue",cat.getCatName());
+                i2.putExtra("idamount",cat.getAmount());
+
                 startActivity(i2);
 
                 startActivity(i2);}
@@ -236,7 +264,24 @@ public class ViewCategory extends AppCompatActivity {
   }
 
 
+    public void addExpense(View view){
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        final DatabaseReference expref = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
+        final DailyExpense d1 = new DailyExpense(cat.getCatName(),Float.parseFloat(cat.getAmount()));
 
+        expref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                expref.push().setValue(d1);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
 
 
 }

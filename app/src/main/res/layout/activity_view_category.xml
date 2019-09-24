@@ -9,19 +9,20 @@
     tools:context="com.example.Heshan.ViewCategory">
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ListView
                 android:id="@+id/listView1"
                 android:layout_width="wrap_content"
-                android:layout_height="550dp"
-                
+                android:layout_height="450dp"
+
 
                 />
         </LinearLayout>
@@ -69,4 +70,24 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/catDelete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/catDelete" />
+
+    <Button
+        android:id="@+id/catAddexpense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/holo_blue_light"
+        android:onClick="addExpense"
+        android:text="@string/catAddExp"
+        android:textColor="#FFFFFF"
+        android:textSize="33dp
+"
+        app:layout_constraintBottom_toBottomOf="@+id/catDelete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.87" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,30 +4,23 @@ import java.util.List;
 
 public class Category {
 
-    public String catID = "" ;
-    private static int count = 0;
-    private String catName;
-    private double amount;
+
+
+    private String catName = "";
+    private String amount;
 
     public Category() {
 
     }
 
-    public Category(String catName, double amount) {
+    public Category(String catName, String amount) {
         //this.catID = catID;
-        catID = "CatID=" + count;
-        count++;
+
         this.catName = catName;
         this.amount = amount;
     }
 
-    public String getCatID() {
-        return catID;
-    }
 
-    public void setCatID(String catID) {
-        this.catID = catID;
-    }
 
     public String getCatName() {
         return catName;
@@ -37,16 +30,16 @@ public class Category {
         this.catName = catName;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 
     public String toString(){
 
-        return  this.catID + "\n"+ "Category Name = " + this.catName + "\n" + "Amount = " + this.amount + "\n";
+        return  this.catName + "  " + this.amount + "\n";
     }
 }

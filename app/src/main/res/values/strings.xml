@@ -93,4 +93,5 @@
     <string name="catView">View</string>
     <string name="AddCat">Insert</string>
     <string name="updateCategory">Update Category</string>
+    <string name="catAddExp">Add Expense</string>
 </resources>

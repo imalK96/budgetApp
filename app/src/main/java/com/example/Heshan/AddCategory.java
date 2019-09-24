@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.imal.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -18,6 +20,9 @@ public class AddCategory extends AppCompatActivity {
     EditText t1,t2;
     Button b1,b2;
     DatabaseReference databaseCategory;
+    private FirebaseAuth firebaseAuth;
+    FirebaseUser user = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +33,10 @@ public class AddCategory extends AppCompatActivity {
         t2 = findViewById(R.id.catupAmount);
         b1 = findViewById(R.id.catAddbtn);
         b2 = findViewById(R.id.catViewbtn);
-        databaseCategory = FirebaseDatabase.getInstance().getReference("Category");
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
+
+        databaseCategory = FirebaseDatabase.getInstance().getReference("Category").child(user.getUid());
 
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +62,11 @@ public class AddCategory extends AppCompatActivity {
 
               //Category cat1 = new Category();
               String catName = t1.getText().toString();
-              Double catAmount = Double.parseDouble(t2.getText().toString());
+              String catAmount = t2.getText().toString();
 
               Category cat = new Category(catName, catAmount);
 
-              databaseCategory.child(cat.getCatID()).setValue(cat);
+              databaseCategory.push().setValue(cat);
 
               Toast.makeText(getApplicationContext(), "Item added successfully", Toast.LENGTH_SHORT).show();
               clearReference();

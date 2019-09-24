@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.imal.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +28,7 @@ public class catUpdate extends AppCompatActivity {
     Module module;
     Category cat;
     private long backPressedTime;
+    private FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -51,13 +54,16 @@ public class catUpdate extends AppCompatActivity {
         txt1 = findViewById(R.id.catupName);
         txt2 = findViewById(R.id.catupAmount);
         BtnUpdate = findViewById(R.id.catup);
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
-        ref = database.getReference("Category");
+        ref = FirebaseDatabase.getInstance().getReference().child("Category").child(user.getUid());
         module = (Module)getApplicationContext();
 
 
         Intent i1 = getIntent();
         final String i = i1.getStringExtra("idValue");
+        final String i3= i1.getStringExtra("idamount");
 
 
 
@@ -66,8 +72,8 @@ public class catUpdate extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //String value = dataSnapshot.child(i).getValue(Category.class).toString();
                     try{
-                    txt1.setText(dataSnapshot.child(i).child("catName").getValue().toString());
-                    txt2.setText(dataSnapshot.child(i).child("amount").getValue().toString());
+                    txt1.setText(i);
+                    txt2.setText(i3);
                     }catch (Exception e){
 
                         System.out.println(e);
@@ -89,27 +95,46 @@ public class catUpdate extends AppCompatActivity {
             public void onClick(View view) {
 
                 try {
-                    String catName = txt1.getText().toString();
-                    String catAmount = txt2.getText().toString();
 
-                if(catName.equals("") && catAmount.equals("")){
-                    Toast.makeText(getApplicationContext(),"Fields are empty!",Toast.LENGTH_SHORT).show();
-                }else if(catName.equals("")){
-                    Toast.makeText(getApplicationContext(),"Name Field is empty!",Toast.LENGTH_SHORT).show();
-                }else if(catAmount.equals("")){
-                    Toast.makeText(getApplicationContext(),"Amount Field is empty",Toast.LENGTH_SHORT).show();
-                }else {
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot ds  : dataSnapshot.getChildren()){
 
-                    Category cat = new Category(catName, Double.parseDouble(catAmount));
+                                if(i.equals(ds.child("catName").getValue().toString())){
+                                    String catName = txt1.getText().toString();
+                                    String catAmount = txt2.getText().toString();
 
-                    ref.child(i).child("catName").setValue(catName);
-                    ref.child(i).child("amount").setValue(Double.parseDouble(catAmount));
+                                    if(catName.equals("") && catAmount.equals("")){
+                                        Toast.makeText(getApplicationContext(),"Fields are empty!",Toast.LENGTH_SHORT).show();
+                                    }else if(catName.equals("")){
+                                        Toast.makeText(getApplicationContext(),"Name Field is empty!",Toast.LENGTH_SHORT).show();
+                                    }else if(catAmount.equals("")){
+                                        Toast.makeText(getApplicationContext(),"Amount Field is empty",Toast.LENGTH_SHORT).show();
+                                    }else {
+
+                                        Category cat = new Category(catName, catAmount);
+
+                                        ds.getRef().child("catName").setValue(catName);
+                                        ds.getRef().child("amount").setValue(catAmount);
 
 
-                    Toast.makeText(getApplicationContext(), "Item updated successfully", Toast.LENGTH_SHORT).show();
-                    Intent i2 = new Intent(getBaseContext(), ViewCategory.class);
-                    startActivity(i2);
-                }
+                                        Toast.makeText(getApplicationContext(), "Item updated successfully", Toast.LENGTH_SHORT).show();
+                                        Intent i2 = new Intent(getBaseContext(), ViewCategory.class);
+                                        startActivity(i2);
+                                    }
+                                }
+
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
 
 
                 }catch (Exception e){
