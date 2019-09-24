@@ -14,7 +14,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="72dp"
         android:layout_marginEnd="16dp"
-        android:text="@string/add_custExp_db"
+        android:text="@string/catName"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"

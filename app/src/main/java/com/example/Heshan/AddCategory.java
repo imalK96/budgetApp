@@ -2,6 +2,7 @@ package com.example.Heshan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,7 @@ public class AddCategory extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     FirebaseUser user = null;
     private long backPressedTime;
+
     @Override
     public void onBackPressed() {
         if(backPressedTime +  2000 > System.currentTimeMillis()){
@@ -75,19 +77,16 @@ public class AddCategory extends AppCompatActivity {
               Toast.makeText(getApplicationContext(), "Amount field is Empty", Toast.LENGTH_SHORT).show();
           } else {
 
-              String arr[] = t1.getText().toString().split("");
-              String s2 = "";
 
-              for(int i = 0; i < arr.length ; i++){
-                  s2 += arr[i];
-              }
 
-              String catName = s2;
+              String catName = t1.getText().toString().trim();
               String catAmount = t2.getText().toString().trim();
 
               Category cat = new Category(catName, catAmount);
 
               databaseCategory.push().setValue(cat);
+
+
 
               Toast.makeText(getApplicationContext(), "Item added successfully", Toast.LENGTH_SHORT).show();
               clearReference();

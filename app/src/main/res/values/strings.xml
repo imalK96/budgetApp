@@ -3,7 +3,7 @@
     <string name="create_budget_db">Create budget</string>
     <string name="profile_db">Profile</string>
     <string name="add_exp_db">Add expense</string>
-    <string name="add_custExp_db">Add category</string>
+    <string name="add_custExp_db">Category Payments</string>
     <string name="exit_db">Exit</string>
     <string name="report_db">Reports</string>
     <string name="login_btn">Login</string>
@@ -20,7 +20,7 @@
     <string name="profileName">Profile</string>
     <string name="reg_btn">Register</string>
 
-    <string name="catName">ADD CATEGORIES</string>
+    <string name="catName">Add Categories</string>
     <string name="catName1">Category Name:</string>
     <string name="catName2">Amount:</string>
     <string name="List">LIST:</string>

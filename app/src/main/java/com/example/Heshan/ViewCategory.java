@@ -122,7 +122,8 @@ public class ViewCategory extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
 
-                String a[] = list.get(i).toString().split(" ", 2);
+                String a[] = list.get(i).toString().split(" ",2);
+
                 cat.setCatName(a[0]);
                 cat.setAmount(a[1]);
 

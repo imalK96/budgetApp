@@ -120,6 +120,7 @@ public class catUpdate extends AppCompatActivity {
                                         ds.getRef().child("amount").setValue(catAmount);
 
 
+
                                         Toast.makeText(getApplicationContext(), "Item updated successfully", Toast.LENGTH_SHORT).show();
                                         Intent i2 = new Intent(getBaseContext(), ViewCategory.class);
                                         startActivity(i2);
