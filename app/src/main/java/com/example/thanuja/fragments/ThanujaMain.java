@@ -6,10 +6,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.example.imal.MainActivity;
 import com.example.imal.R;
 import com.example.thanuja.dialogbox.ExampleDialog;
 import com.example.thanuja.dialogbox.ExampleDialogMonthly;
@@ -33,6 +35,7 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
     private TabLayout tablayout;
     private ViewPager viewPager;
     private ViewPagerAdapter adapter;
+    private long backPressedTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +69,20 @@ public class ThanujaMain extends AppCompatActivity implements ExampleDialog.Exam
 //        });
     }
 
-//    public void openDialog(){
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }
+        else{
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
+    //    public void openDialog(){
 //        ExampleDialog exampleDialog = new ExampleDialog();
 //        exampleDialog.showNow(getSupportFragmentManager(), "example dialog");
 //    }
