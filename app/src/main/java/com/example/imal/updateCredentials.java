@@ -70,10 +70,12 @@ public class updateCredentials extends AppCompatActivity {
             String newEmail = newEmailTxt.getText().toString().trim();
             String newPw = newPwTxt.getText().toString().trim();
 
-            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+
+            final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             // Get auth credentials from the user for re-authentication
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(oldEmail, oldPw); // Current Login Credentials \\
+                    .getCredential(oldEmail, oldPw); // Current Login Credentials
             // Prompt the user to re-provide their sign-in credentials
             user.reauthenticate(credential)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -84,30 +86,40 @@ public class updateCredentials extends AppCompatActivity {
 
                             String newEmail = newEmailTxt.getText().toString().trim();
 
-                            //Now change your email address \\
-                            //----------------Code for Changing Email Address----------\\
-                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+                            //Code for Changing Email Address
+                            //FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             user.updateEmail(newEmail)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
 
+                                                Toast.makeText(getApplicationContext(), "Email updated", Toast.LENGTH_SHORT).show();
+                                                firebaseAuth.signOut();
+                                                finish();
+                                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+
                                             }
                                         }
                                     });
-                            //----------------------------------------------------------\\
+                            //Update password
                             String newPw = newPwTxt.getText().toString().trim();
                             user.updatePassword(newPw).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         Toast.makeText(getApplicationContext(), "Password updated", Toast.LENGTH_SHORT).show();
+                                        firebaseAuth.signOut();
+                                        finish();
+                                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                     } else {
 
                                     }
                                 }
                             });
+
+
                         }
                     });
 
