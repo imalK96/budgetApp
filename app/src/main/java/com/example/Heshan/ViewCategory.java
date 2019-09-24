@@ -183,14 +183,14 @@ public class ViewCategory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(cat.getCatName() != ""){
+                if(!cat.getCatName().isEmpty()){
                 Intent i2 = new Intent(getBaseContext(),catUpdate.class);
                 i2.putExtra("idValue",cat.getCatName());
                 i2.putExtra("idamount",cat.getAmount());
 
                 startActivity(i2);
 
-                startActivity(i2);}
+               }
                 else{
 
                     Toast.makeText(getApplicationContext(),"Please Select Item before update!",Toast.LENGTH_SHORT).show();
@@ -255,22 +255,29 @@ public class ViewCategory extends AppCompatActivity {
 
 
     public void addExpense(View view){
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-        final DatabaseReference expref = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
-        final DailyExpense d1 = new DailyExpense(cat.getCatName(),Float.parseFloat(cat.getAmount()));
 
-        expref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                expref.push().setValue(d1);
-            }
+        try {
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            final DatabaseReference expref = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
+            final DailyExpense d1 = new DailyExpense(cat.getCatName(), Float.parseFloat(cat.getAmount()));
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
+            expref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    expref.push().setValue(d1);
+                    Toast.makeText(getApplicationContext(), "Item added successfully!", Toast.LENGTH_SHORT).show();
 
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "Please Select Item to add the expense!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 

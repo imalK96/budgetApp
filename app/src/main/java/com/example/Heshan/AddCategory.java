@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.imal.MainActivity;
 import com.example.imal.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +23,20 @@ public class AddCategory extends AppCompatActivity {
     DatabaseReference databaseCategory;
     private FirebaseAuth firebaseAuth;
     FirebaseUser user = null;
+    private long backPressedTime;
+    @Override
+    public void onBackPressed() {
+        if(backPressedTime +  2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            return;
+        }
+        else {
+
+            Intent i = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(i);
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
 
 
     @Override
@@ -61,8 +76,8 @@ public class AddCategory extends AppCompatActivity {
           } else {
 
 
-              String catName = t1.getText().toString();
-              String catAmount = t2.getText().toString();
+              String catName = t1.getText().toString().trim();
+              String catAmount = t2.getText().toString().trim();
 
               Category cat = new Category(catName, catAmount);
 
