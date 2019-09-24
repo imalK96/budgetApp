@@ -20,6 +20,8 @@ public class customListView extends ArrayAdapter<String> {
     private ArrayList list;
     private Activity context;
 
+    //to use image with text
+
     public customListView(Activity context,ArrayList list, Integer imageId){
         super(context, R.layout.custom_cell,list);
 

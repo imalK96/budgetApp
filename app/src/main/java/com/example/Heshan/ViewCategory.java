@@ -42,7 +42,6 @@ public class ViewCategory extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     Category cat;
     Button b1,b2;
-    Module module;
     categoryAdapter catAdapter;
     int flag ;
     Integer imgId = R.drawable.bug;
@@ -82,9 +81,7 @@ public class ViewCategory extends AppCompatActivity {
         list = new ArrayList<>();
         final customListView customListView = new customListView(this,list,imgId);
 
-        //catAdapter = new categoryAdapter(this);
-        //adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,list);
-        //listView.setAdapter(new ArrayAdapter<String>(this,R.layout.custom_cell,list));
+
             listView.setAdapter(customListView);
 
         ref.addChildEventListener(new ChildEventListener() {
@@ -119,33 +116,29 @@ public class ViewCategory extends AppCompatActivity {
             }
         });
 
+        //Item clicked method
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //flag = i;
-               //module.setGvalue_Id(list.get(i));
+
                 String a[] = list.get(i).toString().split(" ", 2);
                 cat.setCatName(a[0]);
                 cat.setAmount(a[1]);
 
                 Toast.makeText(getApplicationContext(),"Item selected",Toast.LENGTH_SHORT).show();
-               //Toast.makeText(getApplicationContext(),module.getGvalue_Id(),Toast.LENGTH_SHORT).show();
-               //module.setGvalue_Name(list.get(i));
-                //cat.setCatID(String.valueOf(list.get(i)));
-                //cat.setCatID(list.get(i).substring(0,6));
+
 
             }
         });
 
+        //Data delete
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //final String str = cat.getCatID();
-//                Toast.makeText(getApplicationContext(),cat.getCatID().substring(0,19),Toast.LENGTH_SHORT).show();
-               // final String str = cat.getCatID();
 
-                //Toast.makeText(getApplicationContext(),str,Toast.LENGTH_SHORT).show();
+
+
                 final String str = cat.getCatName();
                 final String amount = cat.getAmount();
                 if(cat.getCatName() == ""){
@@ -178,17 +171,14 @@ public class ViewCategory extends AppCompatActivity {
 
                        }
                    });
-//                    Toast.makeText(getApplicationContext(),"Category is deleted",Toast.LENGTH_SHORT).show();
-//
-//                    Intent i1 = new Intent(getBaseContext(),ViewCategory.class);
-//                    startActivity(i1);
-//                    customListView.notifyDataSetChanged();
+
 
                 }
 
             }
         });
 
+        //update
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

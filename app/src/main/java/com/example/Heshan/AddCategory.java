@@ -47,7 +47,7 @@ public class AddCategory extends AppCompatActivity {
         });
     }
 
-
+    //Data insert part
     public void addCategory(View v){
 
       try {
@@ -60,7 +60,7 @@ public class AddCategory extends AppCompatActivity {
               Toast.makeText(getApplicationContext(), "Amount field is Empty", Toast.LENGTH_SHORT).show();
           } else {
 
-              //Category cat1 = new Category();
+
               String catName = t1.getText().toString();
               String catAmount = t2.getText().toString();
 
@@ -79,7 +79,7 @@ public class AddCategory extends AppCompatActivity {
       }
 
     }
-
+//Clear the fields
     public void clearReference(){
 
         t1.setText("");

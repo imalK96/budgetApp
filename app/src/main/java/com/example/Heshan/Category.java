@@ -5,7 +5,7 @@ import java.util.List;
 public class Category {
 
 
-
+//properties, constructor, getters and  setters
     private String catName = "";
     private String amount;
 
@@ -14,7 +14,7 @@ public class Category {
     }
 
     public Category(String catName, String amount) {
-        //this.catID = catID;
+
 
         this.catName = catName;
         this.amount = amount;
@@ -40,6 +40,6 @@ public class Category {
 
     public String toString(){
 
-        return  this.catName + "  " + this.amount + "\n";
+        return  this.catName + "  " + this.amount;
     }
 }

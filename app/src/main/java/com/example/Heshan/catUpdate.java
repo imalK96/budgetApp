@@ -25,12 +25,12 @@ public class catUpdate extends AppCompatActivity {
     Button BtnUpdate;
     FirebaseDatabase database;
     DatabaseReference ref;
-    Module module;
     Category cat;
     private long backPressedTime;
     private FirebaseAuth firebaseAuth;
 
 
+    //programming back button
     @Override
     public void onBackPressed() {
         if(backPressedTime +  2000 > System.currentTimeMillis()){
@@ -38,7 +38,7 @@ public class catUpdate extends AppCompatActivity {
             return;
         }
         else {
-            //Toast.makeText(getBaseContext(),"Press again to go to view the Items",Toast.LENGTH_SHORT).show();
+
             Intent i = new Intent(getApplicationContext(),ViewCategory.class);
             startActivity(i);
         }
@@ -58,7 +58,7 @@ public class catUpdate extends AppCompatActivity {
         final FirebaseUser user = firebaseAuth.getCurrentUser();
         database = FirebaseDatabase.getInstance();
         ref = FirebaseDatabase.getInstance().getReference().child("Category").child(user.getUid());
-        module = (Module)getApplicationContext();
+
 
 
         Intent i1 = getIntent();
@@ -70,7 +70,7 @@ public class catUpdate extends AppCompatActivity {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //String value = dataSnapshot.child(i).getValue(Category.class).toString();
+
                     try{
                     txt1.setText(i);
                     txt2.setText(i3);
@@ -90,6 +90,7 @@ public class catUpdate extends AppCompatActivity {
             }
         });
 
+        //update method
         BtnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

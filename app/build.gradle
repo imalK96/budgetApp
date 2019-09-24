@@ -35,6 +35,6 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'com.google.firebase:firebase-auth:19.0.0'
 
-    implementation 'com.google.firebase:firebase-auth:19.0.0'
+
 
 }
