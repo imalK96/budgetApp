@@ -24,7 +24,7 @@
 
         <Button
             android:id="@+id/cbmenu"
-            android:layout_width="738dp"
+            android:layout_width="626dp"
             android:layout_height="71dp"
             android:layout_gravity="bottom"
 
@@ -46,7 +46,7 @@
 
         <Button
             android:id="@+id/ubmenu"
-            android:layout_width="738dp"
+            android:layout_width="626dp"
             android:layout_height="71dp"
             android:layout_gravity="bottom"
 
