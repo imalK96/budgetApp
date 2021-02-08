@@ -64,6 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="startDateBudget"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -108,6 +109,7 @@
                         android:id="@+id/addExpBtn"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:onClick="addExpensesNav"
                         android:src="@drawable/coin" />
 
                     <TextView

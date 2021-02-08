@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".registerUser"></activity>
+        <activity android:name="com.example.thanuja.fragments.ThanujaMain"></activity>
+        <activity android:name=".registerUser" />
         <activity android:name=".View" />
         <activity android:name=".addCategory" />
         <activity android:name=".userProfile" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".CreateBudget" />
+        <activity android:name=".CreateBudget1" />
+        <activity android:name=".EnterIncome" />
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
