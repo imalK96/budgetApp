@@ -3,16 +3,18 @@
     android:layout_width="match_parent" android:layout_height="match_parent">
     <EditText
         android:hint="Description"
-        android:id="@+id/edit_username"
+        android:id="@+id/discription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
 
     <EditText
-        android:id="@+id/edit_password"
+        android:id="@+id/amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Amount"
+        android:hint="@string/thanuja_amount"
         android:inputType="text"
-        android:layout_below="@id/edit_username"/>
+        android:layout_below="@id/discription"/>
+
+
 </RelativeLayout>

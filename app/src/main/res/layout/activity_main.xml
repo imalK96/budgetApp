@@ -64,6 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="startDateBudget"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -139,7 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
-                    android:onClick="addCat"
+                    android:onClick="addCategory"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -177,6 +178,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="viewreports"
                     android:orientation="vertical"
                     android:padding="16dp">
 
@@ -184,6 +186,7 @@
                         android:id="@+id/reportsBtn"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
+                        android:onClick="viewreports"
                         android:src="@drawable/reports" />
 
                     <TextView
@@ -253,6 +256,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
+                    android:onClick="Logout"
                     android:orientation="vertical"
                     android:padding="16dp">
 

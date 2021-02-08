@@ -1,23 +1,44 @@
 package com.example.thanuja.recyclerview;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.imal.R;
+import com.example.thanuja.fragments.FragmentDaily;
+import com.example.thanuja.fragments.ThanujaMain;
+import com.example.thanuja.model.DailyExpense;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-
     Context mContext;
     List<Expense> mData;
+    Dialog myDialog;
+
+    DatabaseReference dbRef;
+    DailyExpense de;
+    private FirebaseAuth firebaseAuth;
 
     public RecyclerViewAdapter(Context mContext, List<Expense> mData) {
         this.mContext = mContext;
@@ -27,9 +48,207 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        de = new DailyExpense();
+        firebaseAuth = FirebaseAuth.getInstance();
+        final FirebaseUser user = firebaseAuth.getCurrentUser();
+
+
         View v;
         v = LayoutInflater.from(mContext).inflate(R.layout.activity_thanuja_item_expense, parent, false);
-        MyViewHolder vHolder = new MyViewHolder(v);
+        final MyViewHolder vHolder = new MyViewHolder(v);
+
+        myDialog = new Dialog(mContext);
+        myDialog.setContentView(R.layout.activity_thanuja_updatae_delete_dialogbox);
+
+
+        vHolder.item_expense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final EditText edit_discription = (EditText)myDialog.findViewById(R.id.UDdiscription);
+                final EditText edit_amount = (EditText)myDialog.findViewById(R.id.UDamount);
+                Button update = (Button)myDialog.findViewById(R.id.UDbtnUpdate);
+                Button delete = (Button)myDialog.findViewById(R.id.UDbtnDelete);
+
+                edit_discription.setText(mData.get(vHolder.getAdapterPosition()).getExpenseName());
+                edit_amount.setText(mData.get(vHolder.getAdapterPosition()).getAmount());
+
+                Toast.makeText(mContext, "Text click " +String.valueOf(vHolder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
+                myDialog.show();
+
+                update.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final String d = mData.get(vHolder.getAdapterPosition()).getExpenseName();
+                        final String a = mData.get(vHolder.getAdapterPosition()).getAmount();
+
+                        final DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
+                        updRef.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().setValue(de);
+                                        Toast.makeText(mContext, "Data updated successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+                        final DatabaseReference updRef2 = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
+                        updRef2.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().setValue(de);
+                                        Toast.makeText(mContext, "Data updated successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+                        final DatabaseReference updRef3 = FirebaseDatabase.getInstance().getReference().child("Yearly Expense").child(user.getUid());
+                        updRef3.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().setValue(de);
+                                        Toast.makeText(mContext, "Data updated successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+                    }
+                });
+
+
+                delete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        final String d = mData.get(vHolder.getAdapterPosition()).getExpenseName();
+                        final String a = mData.get(vHolder.getAdapterPosition()).getAmount();
+
+                        DatabaseReference delRef = FirebaseDatabase.getInstance().getReference().child("Daily Expense").child(user.getUid());
+                        delRef.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().removeValue();
+                                        Toast.makeText(mContext, "Data deleted successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+
+                        DatabaseReference delRef2 = FirebaseDatabase.getInstance().getReference().child("Monthly Expense").child(user.getUid());
+                        delRef2.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().removeValue();
+                                        Toast.makeText(mContext, "Data deleted successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+
+                        DatabaseReference delRef3 = FirebaseDatabase.getInstance().getReference().child("Yearly Expense").child(user.getUid());
+                        delRef3.addListenerForSingleValueEvent(new ValueEventListener(){
+                            public void onDataChange(DataSnapshot dataSnapshot){
+                                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                                    String databaseDis = ds.child("discription").getValue().toString();
+                                    String databaseAmt = ds.child("amount").getValue().toString();
+
+                                    if(d.equalsIgnoreCase(databaseDis) && a.equalsIgnoreCase(databaseAmt)){
+                                        de.setDiscription(edit_discription.getText().toString().trim());
+                                        de.setAmount(Float.parseFloat(edit_amount.getText().toString().trim()));
+
+                                        ds.getRef().removeValue();
+                                        Toast.makeText(mContext, "Data deleted successfully", Toast.LENGTH_SHORT).show();
+
+                                        Intent i = new Intent(mContext, ThanujaMain.class);
+                                        mContext.startActivity(i);
+                                    }
+                                }
+                            }
+
+                            public void onCancelled(DatabaseError databaseError){
+
+                            }
+                        });
+
+
+                    }
+                });
+            }
+        });
+
         return vHolder;
     }
 
@@ -46,12 +265,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+        private LinearLayout item_expense;
+
         private TextView tv_name;
         private TextView tv_phone;
         private ImageView img;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            item_expense = (LinearLayout)itemView.findViewById(R.id.item_expense_id);
 
             tv_name = (TextView) itemView.findViewById(R.id.name_contact);
             tv_phone = (TextView) itemView.findViewById(R.id.phone_contact);

@@ -15,15 +15,17 @@
 
         <TextView
             android:id="@+id/title"
+            android:textColor="@color/thanuja_font_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:minHeight="?actionBarSize"
             android:padding="16dp"
-            android:text="Add expenses"
+            android:text="@string/thanuja_addexpenses"
             android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
 
         <com.google.android.material.tabs.TabLayout
+            app:tabTextColor="@color/thanuja_font_color"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/design_default_color_primary"
@@ -40,13 +42,19 @@
         android:id="@+id/viewpager_id">
     </androidx.viewpager.widget.ViewPager>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        app:srcCompat="@drawable/coin" />
-
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="16dp"-->
+<!--        android:layout_marginTop="80dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="1.0"-->
+<!--        app:srcCompat="@drawable/coin" />-->
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
